@@ -22,7 +22,7 @@ import SignupForm from "./Pages/SignupForm";
 import { NavLink, Route, Routes, BrowserRouter } from "react-router-dom";
 import SingleEvent from "./Pages/SingleEvent";
 
-import Logo from "./Images/aveyron-connect.jpg";
+import Logo from "./Images/aveyron-connect.png";
 
 import { Squash as Hamburger } from "hamburger-react";
 import { useState } from "react";
@@ -35,7 +35,10 @@ function App() {
       <BrowserRouter>
         <header className="homepage-header">
           {/* <h1>Aveyron Connect</h1> */}
-          <img src={Logo} alt="logo" className="logo" />
+          <div className="logo-section">
+            <img src={Logo} alt="logo" className="logo" />
+          </div>
+
           <div className="nav-bar-in-header">
             <NavLink className="nav-link" to="/">
               HomePage
@@ -58,21 +61,44 @@ function App() {
               toggle={setOpen}
               onClick={() => {
                 setOpen((prev) => !prev);
-                console.log(isOpen);
               }}
             ></Hamburger>
           </div>
           <div className={isOpen ? "nav-bar open" : "nav-bar"}>
-            <NavLink className="nav-link" to="/">
+            <NavLink
+              className="nav-link"
+              to="/"
+              onClick={() => {
+                setOpen((prev) => !prev);
+              }}
+            >
               HomePage
             </NavLink>
-            <NavLink className="nav-link" to="/signup">
+            <NavLink
+              className="nav-link"
+              to="/signup"
+              onClick={() => {
+                setOpen((prev) => !prev);
+              }}
+            >
               Signup
             </NavLink>
-            <NavLink className="nav-link" to="/login">
+            <NavLink
+              className="nav-link"
+              to="/login"
+              onClick={() => {
+                setOpen((prev) => !prev);
+              }}
+            >
               Login
             </NavLink>
-            <NavLink className="nav-link" to="/event-search">
+            <NavLink
+              className="nav-link"
+              to="/event-search"
+              onClick={() => {
+                setOpen((prev) => !prev);
+              }}
+            >
               Events
             </NavLink>
           </div>

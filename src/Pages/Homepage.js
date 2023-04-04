@@ -4,25 +4,15 @@ import "./Homepage.css";
 const Homepage = () => {
   return (
     <div className="homepage-container">
-      {/* <header className="homepage-header">
-        <h1>Aveyron Connect</h1>
-        <nav>
-          <ul>
-            <li>About</li>
-            <li>Features</li>
-            <li>Contact</li>
-          </ul>
-        </nav>
-      </header> */}
       <main className="homepage-main">
         <section className="homepage-section">
           <div className="homepage-section-content">
             <h2>Aveyron-Connect</h2>
             <p>
               Aveyron Connect helps you connect with locals!
-              <p>
+              <span style={{ display: "block" }}>
                 Search for Events, Find Local Businesses and Join Communities.
-              </p>
+              </span>
             </p>
           </div>
           <div className="homepage-section-image">

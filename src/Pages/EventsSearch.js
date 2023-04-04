@@ -17,20 +17,28 @@ export default function EventsSearch() {
   return (
     <div className="event-container">
       <div className="search-container">
-        <input
-          type="text"
-          placeholder="Search Event"
-          onChange={(e) => {
-            setSearchEventName(e.target.value);
-          }}
-        />
-        <input
-          type="text"
-          placeholder="Search City"
-          onChange={(e) => {
-            setSearchCity(e.target.value);
-          }}
-        />
+        <div className="input-combined">
+          <label>
+            <span>What</span>
+            <input
+              type="text"
+              placeholder="Search Event"
+              onChange={(e) => {
+                setSearchEventName(e.target.value);
+              }}
+            />
+          </label>
+          <label>
+            <span>Where</span>
+            <input
+              type="text"
+              placeholder="Search City"
+              onChange={(e) => {
+                setSearchCity(e.target.value);
+              }}
+            />
+          </label>
+        </div>
       </div>
       <div>
         {eventsFilteredList.map((event) => {

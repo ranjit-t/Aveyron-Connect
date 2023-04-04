@@ -28,7 +28,7 @@ const SignupForm = () => {
   });
 
   return (
-    <div>
+    <div className="form-page">
       <h1 className="form-title">Sign up</h1>
       <form onSubmit={formik.handleSubmit} className="signup-form">
         <div className="form-field">

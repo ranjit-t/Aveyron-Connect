@@ -22,7 +22,7 @@ const LoginForm = () => {
   });
 
   return (
-    <div>
+    <div className="form-page">
       <h1 className="form-title">Log in</h1>
       <form onSubmit={formik.handleSubmit} className="login-form">
         <div className="form-field">

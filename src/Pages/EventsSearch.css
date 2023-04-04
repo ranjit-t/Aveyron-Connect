@@ -6,13 +6,61 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 40px;
+  position: relative;
+}
+.search-container {
+  position: sticky;
+  top: 0px;
+  z-index: 2;
+  background-color: white;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.07);
+}
+.input-combined {
+  margin: 10px;
+  width: fit-content;
+  border: 1px solid #008cba;
+  border-radius: 35px;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+.input-combined label {
+  padding: 6px 10px 0 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.input-combined label:hover {
+  background-color: rgb(212, 209, 209);
+}
+.input-combined label span {
+  font-size: 0.8em;
 }
 
 .search-container input {
+  max-width: 120px;
   margin: 5px;
+  padding: 5px;
   font-family: "Fira Mono", monospace;
-  font-size: 1.2em;
+  font-size: 1em;
+  border-radius: 20px;
+  padding-left: 10px;
+  border: none;
+  outline: none;
 }
+
+.search-container input:hover {
+  border: none;
+  outline: none;
+  background-color: rgb(212, 209, 209);
+}
+.search-container input:focus {
+  background-color: white;
+}
+
 .event-wrapper {
   /* border: 1px solid grey; */
   max-width: 70%;

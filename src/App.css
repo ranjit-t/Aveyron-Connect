@@ -3,7 +3,8 @@
   font-family: "Fira Mono", monospace;
 }
 .logo {
-  height: 100px;
+  height: 60px;
+  padding: 5px 0;
 }
 
 /* Header  */
@@ -19,22 +20,17 @@
   z-index: 1;
 }
 
-.homepage-header h1 {
-  font-size: 30px;
-  font-weight: bold;
-}
-
 .menu-container {
   display: none;
 }
 .nav-bar > * {
-  padding: 10px;
+  padding: 5px;
   font-size: 20px;
   text-decoration: none;
 }
 .nav-link {
   margin: 10px;
-  padding: 10px;
+  /* padding: -10px; */
   font-size: 20px;
   text-decoration: none;
 }
@@ -49,7 +45,7 @@
 }
 
 .hamburger-react {
-  margin-right: 10px;
+  margin-left: 5px;
 }
 
 .open {
@@ -82,7 +78,7 @@
   }
 }
 
-@media (max-width: 780px) {
+/* @media (max-width: 780px) {
   .nav-bar-in-header {
     display: none;
   }
@@ -91,15 +87,40 @@
     align-items: center;
     justify-content: space-between;
   }
-}
+  .logo-section {
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+} */
 
-@media (max-width: 550px) {
+@media (max-width: 700px) {
+  .nav-bar-in-header {
+    display: none;
+  }
+  .menu-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 10px;
+  }
+  .logo-section {
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
   .open {
     flex-direction: column;
     column-gap: 1px;
     height: 50vh;
     justify-content: center;
     animation: open-anime linear 0.3s;
+  }
+  .logo {
+    height: 50px;
+    padding: 5px 0;
   }
 
   .menu-container {
@@ -108,5 +129,7 @@
   .hamburger-react {
     position: absolute;
     left: 0;
+    width: 100%;
+    background-color: #fff;
   }
 }

@@ -1,7 +1,10 @@
+.form-page {
+  margin-top: 50px;
+}
 .signup-form {
   background-color: #f2f2f2;
   padding: 20px;
-  max-width: 500px;
+  max-width: 400px;
   margin: 0 auto;
   border-radius: 10px;
 }
