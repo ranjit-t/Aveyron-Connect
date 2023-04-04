@@ -64,6 +64,7 @@ export default function EventsSearch() {
                   onClick={() => {
                     navigate(`/event/${event.event_id}`);
                   }}
+                  className="more-info-btn"
                 >
                   More Info
                 </button>

@@ -22,6 +22,8 @@ import SignupForm from "./Pages/SignupForm";
 import { NavLink, Route, Routes, BrowserRouter } from "react-router-dom";
 import SingleEvent from "./Pages/SingleEvent";
 
+import Logo from "./Images/aveyron-connect.jpg";
+
 import { Squash as Hamburger } from "hamburger-react";
 import { useState } from "react";
 
@@ -32,7 +34,8 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <header className="homepage-header">
-          <h1>Aveyron Connect</h1>
+          {/* <h1>Aveyron Connect</h1> */}
+          <img src={Logo} alt="logo" className="logo" />
           <div className="nav-bar-in-header">
             <NavLink className="nav-link" to="/">
               HomePage

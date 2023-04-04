@@ -40,7 +40,17 @@
   height: 200px;
   object-fit: cover;
 }
-
+.more-info-btn {
+  background-color: #008cba;
+  color: white;
+  font-size: 1em;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+.more-info-btn:hover {
+  background-color: #097396;
+}
 @media (max-width: 950px) {
   .event-wrapper {
     max-width: 80%;

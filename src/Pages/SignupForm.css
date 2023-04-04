@@ -42,6 +42,9 @@
   cursor: pointer;
   width: 100%;
 }
+.form-submit-btn:hover {
+  background-color: #097396;
+}
 
 @media screen and (max-width: 600px) {
   .signup-form {
