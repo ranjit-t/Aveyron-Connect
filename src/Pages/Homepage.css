@@ -1,0 +1,54 @@
+/* Homepage header styles */
+
+.homepage-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+.homepage-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0;
+}
+
+.homepage-section h2 {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.homepage-section p {
+  font-size: 18px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.homepage-section-image {
+  margin: 20px 0;
+}
+
+.homepage-section-image img {
+  width: 100%;
+  height: auto;
+}
+
+.homepage-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  background-color: #fff;
+  box-shadow: 0px -4px 20px rgba(0, 0, 0, 0.05);
+  font-size: 16px;
+  color: #555;
+}
+img {
+  max-height: 500px;
+}
