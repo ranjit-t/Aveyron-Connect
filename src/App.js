@@ -20,12 +20,14 @@ import Homepage from "./Pages/Homepage";
 import LoginForm from "./Pages/LoginForm";
 import SignupForm from "./Pages/SignupForm";
 import { NavLink, Route, Routes, BrowserRouter } from "react-router-dom";
+
 import SingleEvent from "./Pages/SingleEvent";
 
 import Logo from "./Images/aveyron-connect.png";
 
 import { Squash as Hamburger } from "hamburger-react";
 import { useState } from "react";
+import Profile from "./Pages/Profile";
 
 function App() {
   const [isOpen, setOpen] = useState(false);
@@ -35,9 +37,9 @@ function App() {
       <BrowserRouter>
         <header className="homepage-header">
           {/* <h1>Aveyron Connect</h1> */}
-          <div className="logo-section">
+          <a className="logo-section" href="/">
             <img src={Logo} alt="logo" className="logo" />
-          </div>
+          </a>
 
           <div className="nav-bar-in-header">
             <NavLink className="nav-link" to="/">
@@ -48,6 +50,9 @@ function App() {
             </NavLink>
             <NavLink className="nav-link" to="/login">
               Login
+            </NavLink>
+            <NavLink className="nav-link" to="/profile">
+              My Profile
             </NavLink>
             <NavLink className="nav-link" to="/event-search">
               Events
@@ -94,6 +99,15 @@ function App() {
             </NavLink>
             <NavLink
               className="nav-link"
+              to="/profile"
+              onClick={() => {
+                setOpen((prev) => !prev);
+              }}
+            >
+              My Profile
+            </NavLink>
+            <NavLink
+              className="nav-link"
               to="/event-search"
               onClick={() => {
                 setOpen((prev) => !prev);
@@ -110,6 +124,7 @@ function App() {
           <Route path="/" element={<Homepage></Homepage>} />
           <Route path="/event-search" element={<EventsSearch></EventsSearch>} />
           <Route path="/event/:id" element={<SingleEvent></SingleEvent>} />
+          <Route path="/profile" element={<Profile></Profile>} />
         </Routes>
       </BrowserRouter>
     </div>

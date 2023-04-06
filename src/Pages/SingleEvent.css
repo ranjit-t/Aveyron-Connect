@@ -10,3 +10,11 @@
   object-fit: cover;
   width: 50%;
 }
+.event-section {
+  margin-top: 10px;
+}
+@media (max-width: 700px) {
+  .event-section {
+    margin-top: 45px;
+  }
+}

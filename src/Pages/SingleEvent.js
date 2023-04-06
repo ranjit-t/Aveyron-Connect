@@ -7,7 +7,7 @@ export default function SingleEvent() {
   const { id } = useParams();
   const event = events.filter((event) => event.event_id === id)[0];
   return (
-    <div>
+    <div className="event-section">
       <h1>Event</h1>
       <div>
         <div className="event-gallery">

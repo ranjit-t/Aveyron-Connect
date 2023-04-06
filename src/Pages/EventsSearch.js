@@ -7,11 +7,13 @@ export default function EventsSearch() {
   const navigate = useNavigate();
   const [searchCity, setSearchCity] = useState("");
   const [searchEventName, setSearchEventName] = useState("");
+  const [searchEventDate, setSearchEventDate] = useState("");
 
   const eventsFilteredList = events.filter(
     (event) =>
       event.name.toLowerCase().includes(searchEventName.toLowerCase()) &&
-      event.city.toLowerCase().includes(searchCity.toLowerCase())
+      event.city.toLowerCase().includes(searchCity.toLowerCase()) &&
+      event.date.includes(searchEventDate)
   );
 
   return (
@@ -22,23 +24,52 @@ export default function EventsSearch() {
             <span>What</span>
             <input
               type="text"
-              placeholder="Search Event"
+              placeholder="Event Name"
               onChange={(e) => {
                 setSearchEventName(e.target.value);
               }}
+              value={searchEventName}
             />
           </label>
           <label>
             <span>Where</span>
             <input
               type="text"
-              placeholder="Search City"
+              placeholder="Event City"
               onChange={(e) => {
                 setSearchCity(e.target.value);
               }}
+              value={searchCity}
+            />
+          </label>
+          <label>
+            <span>When</span>
+            <input
+              className="date-input"
+              type="date"
+              placeholder=""
+              onChange={(e) => {
+                setSearchEventDate(e.target.value);
+              }}
+              value={searchEventDate}
             />
           </label>
         </div>
+        <div className="input-buttons">
+          {/* <span>Search</span> */}
+          <span
+            onClick={() => {
+              setSearchCity("");
+              setSearchEventName("");
+              setSearchEventDate("");
+            }}
+          >
+            Clear
+          </span>
+        </div>
+        {/* <div className="clear-inputs">
+          <p>clear</p>
+        </div> */}
       </div>
       <div>
         {eventsFilteredList.map((event) => {

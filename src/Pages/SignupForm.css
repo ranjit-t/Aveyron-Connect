@@ -34,6 +34,12 @@
   margin-top: 5px;
   color: red;
 }
+.form-submitting {
+  color: #008cba;
+}
+.form-success {
+  color: rgb(45, 121, 45);
+}
 
 .form-submit-btn {
   background-color: #008cba;

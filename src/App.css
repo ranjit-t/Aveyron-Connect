@@ -1,10 +1,12 @@
 .App {
   text-align: center;
   font-family: "Fira Mono", monospace;
+  overflow-x: hidden;
 }
 .logo {
   height: 60px;
   padding: 5px 0;
+  cursor: pointer;
 }
 
 /* Header  */
