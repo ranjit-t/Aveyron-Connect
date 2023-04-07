@@ -1,0 +1,36 @@
+.App-footer {
+  background-color: #008cba;
+  color: #fff;
+  width: 100%;
+  padding: 25px 0 10px 0;
+}
+.footer-links {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: left;
+}
+ul {
+  list-style: none;
+}
+.App-footer li {
+  cursor: pointer;
+  margin-top: 10px;
+}
+.contact {
+  font-size: 19px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media (max-width: 600px) {
+  .footer-links {
+    /* font-size: 0.5rem; */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .contact {
+    flex-direction: column;
+  }
+}

@@ -31,6 +31,7 @@ import Profile from "./Pages/Profile";
 import AddEvent from "./PagesToAdd/AddEvent";
 import ActivitiesSearch from "./Pages/ActivitiesSearch";
 import Home from "./Pages/Home";
+import Footer from "./Pages/Footer";
 
 function App() {
   const [isOpen, setOpen] = useState(false);
@@ -160,6 +161,7 @@ function App() {
           <Route path="/add-event" element={<AddEvent></AddEvent>} />
         </Routes>
       </BrowserRouter>
+      <Footer></Footer>
     </div>
   );
 }

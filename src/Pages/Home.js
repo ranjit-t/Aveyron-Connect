@@ -1,6 +1,10 @@
 import React from "react";
 import "./Home.css";
 
+import marketing from "../Images/marketing.png";
+import euro from "../Images/euro.png";
+import eco from "../Images/eco.png";
+
 export default function Home() {
   return (
     <div className="home-page">
@@ -85,7 +89,9 @@ export default function Home() {
             directly through our site, making planning your next adventure a
             breeze.
           </p>
-          <button className="add-activity-btn">Add Your Activity</button>
+          <div>
+            <button className="add-activity-btn">Organise An Activity</button>
+          </div>
         </div>
 
         <div className="organize-activity-image">
@@ -103,7 +109,7 @@ export default function Home() {
             alt="business"
           />
         </div>
-        <div className="add-business-content">
+        {/* <div className="add-business-content">
           <p>
             Want to boost your business's visibility? Add your business to our
             platform and reach a wider audience. With our site, you can connect
@@ -120,12 +126,59 @@ export default function Home() {
             build your reputation as a trusted business in your community.
           </p>
           <button className="add-business-btn">Add Your Business</button>
+        </div> */}
+        <div className="pro-account-proposal">
+          <p>
+            Are you looking for a way to promote your business or events in an
+            eco-friendly way? Aveyron-Connect offers a platform that allows you
+            to reach a wider audience and connect with environmentally conscious
+            individuals who share your values.
+          </p>
+          <ul>
+            <li>
+              <img src={marketing} alt="Visibility" className="pro-icon" />
+              Increased visibility: reach a wider audience of environmentally
+              conscious individuals who share your values.
+            </li>
+            <li>
+              <img src={eco} alt="Eco-friendly" className="pro-icon" />
+              Eco-friendly marketing: use our paperless marketing strategies to
+              reduce your carbon footprint and attract like-minded customers.
+            </li>
+
+            <li>
+              <img src={euro} alt="Euro" className="pro-icon" />
+              Only €10 for a lifetime pro account: enjoy all the benefits of a
+              pro account without any ongoing subscription costs.
+            </li>
+          </ul>
+          <p>
+            Sign up for a pro account on Aveyron-Connect today and start
+            promoting your business or events to a community of environmentally
+            conscious individuals.
+          </p>
+          <p>
+            <b>
+              Together, we can create a more sustainable future and make a
+              positive impact on the environment.
+            </b>
+          </p>
+
+          <div>
+            <button
+              className="add-btn"
+              // onClick={handleOrganizeActivity}
+              style={{ marginBottom: "50px" }}
+            >
+              Sign Up for a Pro Account
+            </button>
+          </div>
         </div>
       </div>
       <hr />
-      <footer className="homepage-footer">
+      {/* <footer className="homepage-footer">
         <p>&copy; 2023 Aveyron Connect. All rights reserved.</p>
-      </footer>
+      </footer> */}
     </div>
   );
 }
