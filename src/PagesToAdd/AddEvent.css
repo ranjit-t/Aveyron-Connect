@@ -1,0 +1,93 @@
+.add-event-page {
+  margin-top: 45px;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%; */
+}
+.add-event-page form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  gap: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 70%;
+}
+
+.add-event-page form label {
+  /* display: inline-block; */
+  width: 70%;
+  font-weight: bold;
+}
+
+.add-event-page form input,
+.add-event-page form select,
+.add-event-page form textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 70%;
+  max-width: 400px;
+}
+
+.price-free {
+  display: flex;
+  column-gap: 10px;
+}
+.add-event-page form button {
+  background-color: #008cba;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+/* #myFileInput {
+  text-align: center;
+} */
+
+/* #myFileInput::before {
+  content: "No file chosen";
+  display: inline-block;
+  margin-right: 5px;
+  color: #aaa;
+  font-size: 14px;
+} */
+
+.myFileInput::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.myFileInput::before {
+  content: "Choose file";
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 5px 10px;
+  color: #fff;
+  background-color: #008cba;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  width: fit-content;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.myFileInput:hover::before {
+  background-color: #097396;
+}
+
+.myFileInput:active::before {
+  background-color: #097396;
+}

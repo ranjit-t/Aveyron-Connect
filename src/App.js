@@ -28,6 +28,7 @@ import Logo from "./Images/aveyron-connect.png";
 import { Squash as Hamburger } from "hamburger-react";
 import { useState } from "react";
 import Profile from "./Pages/Profile";
+import AddEvent from "./PagesToAdd/AddEvent";
 
 function App() {
   const [isOpen, setOpen] = useState(false);
@@ -45,15 +46,18 @@ function App() {
             <NavLink className="nav-link" to="/">
               HomePage
             </NavLink>
+            {/* <NavLink className="nav-link" to="/add-event">
+              Add Event
+            </NavLink> */}
             <NavLink className="nav-link" to="/signup">
               Signup
             </NavLink>
             <NavLink className="nav-link" to="/login">
               Login
             </NavLink>
-            <NavLink className="nav-link" to="/profile">
+            {/* <NavLink className="nav-link" to="/profile">
               My Profile
-            </NavLink>
+            </NavLink> */}
             <NavLink className="nav-link" to="/event-search">
               Events
             </NavLink>
@@ -108,6 +112,15 @@ function App() {
             </NavLink>
             <NavLink
               className="nav-link"
+              to="/add-event"
+              onClick={() => {
+                setOpen((prev) => !prev);
+              }}
+            >
+              Add Event
+            </NavLink>
+            <NavLink
+              className="nav-link"
               to="/event-search"
               onClick={() => {
                 setOpen((prev) => !prev);
@@ -125,6 +138,7 @@ function App() {
           <Route path="/event-search" element={<EventsSearch></EventsSearch>} />
           <Route path="/event/:id" element={<SingleEvent></SingleEvent>} />
           <Route path="/profile" element={<Profile></Profile>} />
+          <Route path="/add-event" element={<AddEvent></AddEvent>} />
         </Routes>
       </BrowserRouter>
     </div>
