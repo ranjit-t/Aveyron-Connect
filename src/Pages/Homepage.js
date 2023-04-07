@@ -8,6 +8,7 @@ const Homepage = () => {
         <section className="homepage-section">
           <div className="homepage-section-content">
             <h2>Aveyron-Connect</h2>
+            <p>C'est quoi Aveyron-Connect ?</p>
             <p>
               Aveyron Connect helps you connect with locals!
               <span style={{ display: "block" }}>
@@ -22,37 +23,58 @@ const Homepage = () => {
             ></img>
           </div>
         </section>
-        <section className="homepage-section">
-          <div className="homepage-section-content">
-            <h2>Find Local Events</h2>
-            <p>
-              With Aveyron Connect, you'll never miss a local event again. Our
-              platform allows you to browse events in your area and connect with
-              others who share your interests.
-            </p>
-          </div>
-          <div className="homepage-section-image">
-            <img
-              src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-              alt="Events"
-            ></img>
-          </div>
-        </section>
-        <section className="homepage-section">
-          <div className="homepage-section-content">
-            <h2>Join Communities</h2>
-            <p>
-              Join communities on Aveyron Connect and connect with like-minded
-              individuals who share your passions and interests.
-            </p>
-          </div>
-          <div className="homepage-section-image">
-            <img
-              src="https://images.unsplash.com/photo-1539635278303-d4002c07eae3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-              alt="Communities"
-            ></img>
-          </div>
-        </section>
+        <div className="homepage-features">
+          <section>
+            <div className="homepage-section-content">
+              <h2>Find Local Events</h2>
+              <p>
+                With Aveyron Connect, you'll never miss a local event again. Our
+                platform allows you to browse events in your area and connect
+                with others.
+              </p>
+            </div>
+            <div className="homepage-section-image">
+              <img
+                src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+                alt="Events"
+              ></img>
+            </div>
+            <button>Find Events</button>
+          </section>
+          <section>
+            <div className="homepage-section-content">
+              <h2>Join Communities</h2>
+              <p>
+                Join communities on Aveyron Connect and connect with like-minded
+                individuals who share your passions and interests.
+              </p>
+            </div>
+            <div className="homepage-section-image">
+              <img
+                src="https://images.unsplash.com/photo-1539635278303-d4002c07eae3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+                alt="Communities"
+              ></img>
+            </div>
+            <button>Find Activities</button>
+          </section>
+          <section>
+            <div className="homepage-section-content">
+              <h2>Join Communities</h2>
+              <p>
+                Join communities on Aveyron Connect and connect with like-minded
+                individuals who share your passions and interests.
+              </p>
+            </div>
+            <div className="homepage-section-image">
+              <img
+                src="https://images.unsplash.com/photo-1539635278303-d4002c07eae3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+                alt="Communities"
+              ></img>
+            </div>
+            <button>Find Activities</button>
+          </section>
+        </div>
+        <hr style={{ width: "70%", marginTop: "40px" }}></hr>
         <h1>Organize an Activity</h1>
         <div className="organize-activity-container">
           <div className="organize-activity-content">
@@ -71,9 +93,7 @@ const Homepage = () => {
               your activity directly through our site, making planning your next
               adventure a breeze.
             </p>
-            <button className="add-activity-btn">
-              Start Planning Your Adventure
-            </button>
+            <button className="add-activity-btn">Add Your Activity</button>
           </div>
 
           <div className="organize-activity-image">
@@ -86,7 +106,7 @@ const Homepage = () => {
         <hr />
 
         <h1>Add Your Business</h1>
-        <div className="add-business-container">
+        <div className="add-business-container" id="add-business-container">
           <div className="add-business-content">
             <p>
               Want to boost your business's visibility? Add your business to our

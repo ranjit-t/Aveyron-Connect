@@ -16,12 +16,12 @@
 
 import "./App.css";
 import EventsSearch from "./Pages/EventsSearch";
-import Homepage from "./Pages/Homepage";
+// import Homepage from "./Pages/Homepage";
 import LoginForm from "./Pages/LoginForm";
 import SignupForm from "./Pages/SignupForm";
 import { NavLink, Route, Routes, BrowserRouter } from "react-router-dom";
 
-import SingleEvent from "./Pages/SingleEvent";
+import SingleEvent from "./PagesVariable/SingleEvent";
 
 import Logo from "./Images/aveyron-connect.png";
 
@@ -29,6 +29,8 @@ import { Squash as Hamburger } from "hamburger-react";
 import { useState } from "react";
 import Profile from "./Pages/Profile";
 import AddEvent from "./PagesToAdd/AddEvent";
+import ActivitiesSearch from "./Pages/ActivitiesSearch";
+import Home from "./Pages/Home";
 
 function App() {
   const [isOpen, setOpen] = useState(false);
@@ -49,17 +51,20 @@ function App() {
             {/* <NavLink className="nav-link" to="/add-event">
               Add Event
             </NavLink> */}
-            <NavLink className="nav-link" to="/signup">
+            {/* <NavLink className="nav-link" to="/signup">
               Signup
             </NavLink>
             <NavLink className="nav-link" to="/login">
               Login
-            </NavLink>
-            {/* <NavLink className="nav-link" to="/profile">
-              My Profile
             </NavLink> */}
+            <NavLink className="nav-link" to="/profile">
+              My Profile
+            </NavLink>
             <NavLink className="nav-link" to="/event-search">
               Events
+            </NavLink>
+            <NavLink className="nav-link" to="/activity-search">
+              Activities
             </NavLink>
           </div>
         </header>
@@ -128,14 +133,28 @@ function App() {
             >
               Events
             </NavLink>
+            <NavLink
+              className="nav-link"
+              to="/activity-search"
+              onClick={() => {
+                setOpen((prev) => !prev);
+              }}
+            >
+              Activities
+            </NavLink>
           </div>
         </div>
 
         <Routes>
           <Route path="/signup" element={<SignupForm></SignupForm>} />
           <Route path="/login" element={<LoginForm></LoginForm>} />
-          <Route path="/" element={<Homepage></Homepage>} />
+          <Route path="/" element={<Home></Home>} />
           <Route path="/event-search" element={<EventsSearch></EventsSearch>} />
+          <Route
+            path="/activity-search"
+            element={<ActivitiesSearch></ActivitiesSearch>}
+          />
+
           <Route path="/event/:id" element={<SingleEvent></SingleEvent>} />
           <Route path="/profile" element={<Profile></Profile>} />
           <Route path="/add-event" element={<AddEvent></AddEvent>} />

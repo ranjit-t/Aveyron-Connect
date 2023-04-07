@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import "./EventsSearch.css";
 import { useNavigate } from "react-router-dom";
 
+import { motion, AnimatePresence } from "framer-motion";
+
 export default function EventsSearch() {
   const navigate = useNavigate();
   const [searchCity, setSearchCity] = useState("");
@@ -18,6 +20,7 @@ export default function EventsSearch() {
 
   return (
     <div className="event-container">
+      <h1>Events</h1>
       <div className="search-container">
         <div className="input-combined">
           <label>
@@ -56,7 +59,6 @@ export default function EventsSearch() {
           </label>
         </div>
         <div className="input-buttons">
-          {/* <span>Search</span> */}
           <span
             onClick={() => {
               setSearchCity("");
@@ -67,50 +69,69 @@ export default function EventsSearch() {
             Clear
           </span>
         </div>
-        {/* <div className="clear-inputs">
-          <p>clear</p>
-        </div> */}
       </div>
       <div>
-        {eventsFilteredList.map((event) => {
-          return (
-            <div className="event-wrapper" key={event.event_id}>
-              <div className="event-image">
-                <img src={event.photos[0]} alt={event.name} />
-              </div>
-              <div className="event-details">
-                <p>
-                  <b>Name: </b>
-                  {event.name}
-                </p>
-                <p>
-                  <b>Type: </b>
-                  {event.type}
-                </p>
-                <p>
-                  <b>Description: </b>
-                  {event.short_description}
-                </p>
-                <p>
-                  <b>City: </b>
-                  {event.city}
-                </p>
-                <p>
-                  <b>Date: </b>
-                  {event.date}
-                </p>
-                <button
-                  onClick={() => {
-                    navigate(`/event/${event.event_id}`);
-                  }}
-                  className="more-info-btn"
+        <AnimatePresence>
+          {eventsFilteredList.length > 0 ? (
+            eventsFilteredList.map((event) => {
+              return (
+                // <div className="event-wrapper" key={event.event_id}>
+                <motion.div
+                  key={event.event_id}
+                  className="event-wrapper"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.2 }}
                 >
-                  More Info
-                </button>
-              </div>
-            </div>
-          );
-        })}
+                  <div className="event-image">
+                    <img src={event.photos[0]} alt={event.name} />
+                  </div>
+                  <div className="event-details">
+                    <p>
+                      <b>Name: </b>
+                      {event.name}
+                    </p>
+                    <p>
+                      <b>Type: </b>
+                      {event.type}
+                    </p>
+                    <p>
+                      <b>Description: </b>
+                      {event.short_description}
+                    </p>
+                    <p>
+                      <b>City: </b>
+                      {event.city}
+                    </p>
+                    <p>
+                      <b>Date: </b>
+                      {event.date}
+                    </p>
+                    <button
+                      onClick={() => {
+                        navigate(`/event/${event.event_id}`);
+                      }}
+                      className="more-info-btn"
+                    >
+                      More Info
+                    </button>
+                  </div>
+                </motion.div>
+              );
+            })
+          ) : (
+            <motion.div
+              // className="event-wrapper"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.2 }}
+            >
+              <p>Nothing Found</p>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );

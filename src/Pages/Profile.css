@@ -1,14 +1,48 @@
 .profile-container {
-  width: 50%;
+  width: 70%;
   margin: 0 auto;
   text-align: center;
   margin-top: 45px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-right: auto;
+  margin-left: auto;
 }
 
-label {
+.profile-container label {
   display: block;
   margin-bottom: 10px;
   font-weight: bold;
+}
+.pro-account-proposal,
+.profile-settings,
+.add-activity-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-right: auto;
+  margin-left: auto;
+  width: 70%;
+}
+
+.profile-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.settings-icon {
+  margin-left: 20px;
+  width: 30px;
+  height: 30px;
+}
+.pro-icon {
+  margin-right: 20px;
+  width: 50px;
+  height: 50px;
 }
 
 input {
@@ -16,8 +50,8 @@ input {
   border: 1px solid #ccc;
   border-radius: 3px;
   margin-bottom: 10px;
-  width: 100%;
-  max-width: 400px;
+  width: 400px;
+  /* min-width: 500px; */
 }
 
 button.save-changes-btn,
@@ -46,7 +80,6 @@ button.save-changes-btn:hover {
 }
 .organize-activity-container {
   display: flex;
-
   justify-content: space-evenly;
   column-gap: 40px;
   max-width: 90%;
@@ -56,10 +89,25 @@ button.save-changes-btn:hover {
   align-items: center;
   font-size: 18px;
 }
+ul {
+  padding: 0;
+  margin: 0;
+}
 
 @media (max-width: 800px) {
+  .profile-container {
+    width: 100%;
+  }
+  .pro-account-proposal,
+  .profile-settings,
+  .add-activity-container {
+    width: 100%;
+  }
   .organize-activity-container {
-    flex-direction: column-reverse;
+    flex-direction: column;
+  }
+  input {
+    width: 100%;
   }
 }
 .add-business-btn {
@@ -86,11 +134,15 @@ button.save-changes-btn:hover {
 
 @media (max-width: 800px) {
   .add-business-container {
-    flex-direction: column-reverse;
+    flex-direction: column;
+    width: 100%;
   }
 
   .add-business-text,
   .add-business-image {
     width: 100%;
+  }
+  .profile-container {
+    width: 80%;
   }
 }

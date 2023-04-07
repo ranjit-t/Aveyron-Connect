@@ -14,8 +14,8 @@ export let events = [
       "Stunning art exhibition featuring works capturing the essence of nature",
     photos: [
       "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-      "https://picsum.photos/800/400",
-      "https://picsum.photos/800/400",
+      "https://source.unsplash.com/random/1200x800?sig=1",
+      "https://source.unsplash.com/random/1200x800?sig=2",
     ],
   },
   {
@@ -33,8 +33,8 @@ export let events = [
       "Unforgettable night of jazz music with talented musicians",
     photos: [
       "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-      "https://picsum.photos/800/400",
-      "https://picsum.photos/800/400",
+      "https://source.unsplash.com/random/1200x800?sig=1",
+      "https://source.unsplash.com/random/1200x800?sig=2",
     ],
   },
   {
@@ -52,8 +52,8 @@ export let events = [
       "Intense and fun fitness bootcamp to help you achieve your fitness goals",
     photos: [
       "https://images.unsplash.com/photo-1561489396-888724a1543d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-      "https://picsum.photos/800/400",
-      "https://picsum.photos/800/400",
+      "https://source.unsplash.com/random/1200x800?sig=1",
+      "https://source.unsplash.com/random/1200x800?sig=2",
     ],
   },
   {
@@ -70,8 +70,8 @@ export let events = [
     short_description: "Night of classic Hollywood movies in a cozy atmosphere",
     photos: [
       "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-      "https://picsum.photos/800/400",
-      "https://picsum.photos/800/400",
+      "https://source.unsplash.com/random/1200x800?sig=1",
+      "https://source.unsplash.com/random/1200x800?sig=2",
     ],
   },
   {
@@ -89,8 +89,8 @@ export let events = [
       "Mouth-watering food festival featuring flavors from around the world",
     photos: [
       "https://images.unsplash.com/photo-1485768071412-bded21c2be08?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-      "https://picsum.photos/800/400",
-      "https://picsum.photos/800/400",
+      "https://source.unsplash.com/random/1200x800?sig=1",
+      "https://source.unsplash.com/random/1200x800?sig=2",
     ],
   },
   {
@@ -109,8 +109,8 @@ export let events = [
       "Day of cutting-edge technology and innovation at the Innovate Now tech conference",
     photos: [
       "https://images.unsplash.com/photo-1591115765373-5207764f72e7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-      "https://picsum.photos/800/400",
-      "https://picsum.photos/800/400",
+      "https://source.unsplash.com/random/1200x800?sig=1",
+      "https://source.unsplash.com/random/1200x800?sig=2",
     ],
   },
   {
@@ -128,8 +128,8 @@ export let events = [
       "Step into the world of high fashion at the Haute Couture fashion show",
     photos: [
       "https://images.unsplash.com/photo-1605289355680-75fb41239154?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-      "https://picsum.photos/800/400",
-      "https://picsum.photos/800/400",
+      "https://source.unsplash.com/random/1200x800?sig=1",
+      "https://source.unsplash.com/random/1200x800?sig=2",
     ],
   },
   {
@@ -146,8 +146,8 @@ export let events = [
     short_description: "Night of giving back at the Giving Back charity gala",
     photos: [
       "https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-      "https://picsum.photos/800/400",
-      "https://picsum.photos/800/400",
+      "https://source.unsplash.com/random/1200x800?sig=1",
+      "https://source.unsplash.com/random/1200x800?sig=2",
     ],
   },
   {
@@ -165,8 +165,8 @@ export let events = [
       "Explore latest tech trends and innovations at the Future Tech Trends conference",
     photos: [
       "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1412&q=80",
-      "https://picsum.photos/800/400",
-      "https://picsum.photos/800/400",
+      "https://source.unsplash.com/random/1200x800?sig=1",
+      "https://source.unsplash.com/random/1200x800?sig=2",
     ],
   },
   {
@@ -184,8 +184,8 @@ export let events = [
       "Explore a world of flavors at the A World of Flavors food festival",
     photos: [
       "https://images.unsplash.com/photo-1560479284-b69bb03b5e39?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
-      "https://picsum.photos/800/400",
-      "https://picsum.photos/800/400",
+      "https://source.unsplash.com/random/1200x800?sig=1",
+      "https://source.unsplash.com/random/1200x800?sig=2",
     ],
   },
 ];

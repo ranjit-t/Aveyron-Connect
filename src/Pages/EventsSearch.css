@@ -8,9 +8,9 @@
   position: relative;
 }
 .search-container {
-  position: sticky;
+  /* position: sticky;
   top: 0;
-  z-index: 2;
+  z-index: 2; */
   background-color: white;
   width: 100%;
   display: flex;
@@ -78,7 +78,6 @@
 }
 
 .event-wrapper {
-  /* border: 1px solid grey; */
   max-width: 70%;
   margin: 40px;
   margin-left: auto;
@@ -100,7 +99,7 @@
 }
 
 .event-image img {
-  width: 100%;
+  min-width: 100%;
   height: 200px;
   object-fit: cover;
 }
@@ -134,7 +133,6 @@
   }
   .input-combined label {
     padding: 6px 1px 0 1px;
-    /* max-width: 80%; */
     width: 100%;
     flex-direction: column;
     align-items: center;
@@ -151,6 +149,9 @@
     border-bottom: 1px solid grey;
     border-radius: 10%;
   }
+  .input-combined label {
+    padding-bottom: 10px;
+  }
 
   .input-combined {
     width: 90%;
@@ -158,6 +159,5 @@
     flex-direction: column;
     align-items: center;
     border-radius: 50px;
-    padding-bottom: 10px;
   }
 }
