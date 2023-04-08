@@ -1,6 +1,7 @@
 import { activities } from "../Data/activities";
 import "./ActivitesSearch.css";
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 import React, { useState } from "react";
 
@@ -8,6 +9,7 @@ export default function ActivitiesSearch() {
   const [searchCity, setSearchCity] = useState("");
   const [searchName, setSearchName] = useState("");
   const [searchDate, setSearchDate] = useState("");
+  const navigate = useNavigate();
 
   const activitiesFilteredList = activities.filter(
     (act) =>
@@ -97,7 +99,14 @@ export default function ActivitiesSearch() {
                     <b>Date:</b>
                     {act.date}
                   </p>
-                  <button className="more-info-btn">More Info</button>
+                  <button
+                    className="more-info-btn"
+                    onClick={() => {
+                      navigate(`/activity/${act.id}`);
+                    }}
+                  >
+                    More Info
+                  </button>
                 </motion.div>
               );
             })

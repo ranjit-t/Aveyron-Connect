@@ -1,4 +1,4 @@
-export const activities = [
+export let activities = [
   {
     id: 1,
     name: "Picnic in the park",
@@ -9,7 +9,19 @@ export const activities = [
     timing: "12:00 PM",
     city: "Rodez",
     address: "Central Park",
-    comments: [],
+    participants: ["John", "Ram", "Steve"],
+    comments: [
+      {
+        user: "Steve",
+        comment: "hello, where exactly it is ?",
+        time: "08/04/2023, 16:30:39",
+      },
+      {
+        user: "Ram",
+        comment: "thank you so much for organizing it",
+        time: "08/04/2023, 17:33:39",
+      },
+    ],
   },
   {
     id: 2,

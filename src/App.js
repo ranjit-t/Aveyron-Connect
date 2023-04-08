@@ -32,6 +32,7 @@ import AddEvent from "./PagesToAdd/AddEvent";
 import ActivitiesSearch from "./Pages/ActivitiesSearch";
 import Home from "./Pages/Home";
 import Footer from "./Pages/Footer";
+import SingleActivity from "./PagesVariable/SingleActivity";
 
 function App() {
   const [isOpen, setOpen] = useState(false);
@@ -157,6 +158,10 @@ function App() {
           />
 
           <Route path="/event/:id" element={<SingleEvent></SingleEvent>} />
+          <Route
+            path="/activity/:id"
+            element={<SingleActivity></SingleActivity>}
+          />
           <Route path="/profile" element={<Profile></Profile>} />
           <Route path="/add-event" element={<AddEvent></AddEvent>} />
         </Routes>
