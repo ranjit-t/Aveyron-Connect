@@ -33,6 +33,7 @@ export let activities = [
     timing: "3:00 PM",
     city: "Naucelle",
     address: "123 Main Street",
+    participants: [],
     comments: [],
   },
   {
@@ -45,6 +46,7 @@ export let activities = [
     timing: "9:00 AM",
     city: "Saint Martial",
     address: "Golden Gate Park",
+    participants: [],
     comments: [],
   },
   {
@@ -57,6 +59,7 @@ export let activities = [
     timing: "8:00 PM",
     city: "Rodez",
     address: "Millennium Park",
+    participants: [],
     comments: [],
   },
   {
@@ -69,6 +72,7 @@ export let activities = [
     timing: "6:00 PM",
     city: "Onet le chatéau",
     address: "South Beach",
+    participants: [],
     comments: [],
   },
   {
@@ -81,6 +85,7 @@ export let activities = [
     timing: "12:00 PM",
     city: "Naucelle",
     address: "Mission Beach",
+    participants: [],
     comments: [],
   },
   {
@@ -93,6 +98,7 @@ export let activities = [
     timing: "10:00 AM",
     city: "Rodez",
     address: "Zilker Park",
+    participants: [],
     comments: [],
   },
   {
@@ -105,6 +111,7 @@ export let activities = [
     timing: "7:00 PM",
     city: "Millau",
     address: "Green Lake Park",
+    participants: [],
     comments: [],
   },
 ];

@@ -42,7 +42,7 @@ export default function Home() {
           </div>
         </div>
         <div className="explore-activities">
-          <h2>Activies</h2>
+          <h2>Activities</h2>
           <p>
             Join communities on Aveyron Connect and connect with like-minded
             individuals who share your passions and interests.
@@ -52,7 +52,7 @@ export default function Home() {
             alt="Communities"
           ></img>
           <div>
-            <button>Find Activies</button>
+            <button>Find Activities</button>
           </div>
         </div>
         <div className="explore-stores">

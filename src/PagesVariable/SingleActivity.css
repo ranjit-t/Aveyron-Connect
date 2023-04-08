@@ -45,7 +45,8 @@
   flex-grow: 1;
   height: 40px;
 }
-.comment-input button {
+.comment-input button,
+.attend-button {
   all: unset;
   max-width: fit-content;
   background-color: #008cba;
@@ -53,10 +54,20 @@
   padding: 5px;
   cursor: pointer;
 }
-.comment-input button:hover {
-  background-color: #097396;
+.attend-button {
+  margin-bottom: 20px;
 }
 
+.comment-input button:hover,
+.attend-button:hover {
+  background-color: #097396;
+}
+.not-attending {
+  background-color: red;
+}
+.not-attending:hover {
+  background-color: rgb(210, 10, 10);
+}
 @media (max-width: 800px) {
   .comment-section {
     width: 90%;
