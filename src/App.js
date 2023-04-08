@@ -33,6 +33,7 @@ import ActivitiesSearch from "./Pages/ActivitiesSearch";
 import Home from "./Pages/Home";
 import Footer from "./Pages/Footer";
 import SingleActivity from "./PagesVariable/SingleActivity";
+import UserProfile from "./PagesVariable/UserProfile";
 
 function App() {
   const [isOpen, setOpen] = useState(false);
@@ -163,6 +164,10 @@ function App() {
             element={<SingleActivity></SingleActivity>}
           />
           <Route path="/profile" element={<Profile></Profile>} />
+          <Route
+            path="/user-profile/:id"
+            element={<UserProfile></UserProfile>}
+          />
           <Route path="/add-event" element={<AddEvent></AddEvent>} />
         </Routes>
       </BrowserRouter>

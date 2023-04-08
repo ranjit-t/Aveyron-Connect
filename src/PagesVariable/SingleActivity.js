@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { activities } from "../Data/activities";
 import "./SingleActivity.css";
 
 export default function SingleActivity() {
+  const navigate = useNavigate();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -56,7 +57,14 @@ export default function SingleActivity() {
       </p>
       <p>
         <b>Organized by: </b>
-        {act.organizer}
+        <span
+          style={{ cursor: "pointer", color: "#097396", fontWeight: "bold" }}
+          onClick={() => {
+            navigate("/user-profile/1");
+          }}
+        >
+          {act.organizer}
+        </span>
       </p>
       <p>
         <b>Participants: </b>
