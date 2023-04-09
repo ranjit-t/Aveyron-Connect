@@ -1,0 +1,28 @@
+.my-activities-page {
+  /* min-width: 100%; */
+  /* min-width: 55vh; */
+}
+.my-activities-list {
+  background-color: #afc5e821;
+  padding: 10px 100px;
+  line-height: 0.5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.my-activities-map {
+  background-color: #a43f00;
+  color: white;
+  width: 100%;
+  padding: 5px 100px;
+  margin-bottom: 5px;
+  flex-grow: 1;
+  cursor: pointer;
+}
+.past-activities {
+  background-color: #a4b6d253;
+
+  color: grey;
+  cursor: default;
+}

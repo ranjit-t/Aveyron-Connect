@@ -82,7 +82,7 @@ export default function SingleActivity() {
               setAct(updatedAct);
             }}
           >
-            Not Attending
+            Remove Attending
           </button>
         ) : (
           <button
@@ -107,6 +107,7 @@ export default function SingleActivity() {
         <div className="comment-input">
           <input
             type="text"
+            placeholder="Avez-vous des questions?"
             onChange={(e) => setNewComment(e.target.value)}
             value={newComment}
           />
