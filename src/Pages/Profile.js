@@ -3,6 +3,7 @@ import "./Profile.css";
 import settings from "../Images/settings.png";
 import myactivitiesIcon from "../Images/myactivities.png";
 import addact from "../Images/addact.png";
+import attend from "../Images/attend.png";
 
 import verified from "../Images/verified.png";
 import UserSettings from "../subComponents/UserSettings";
@@ -65,7 +66,7 @@ export default function Profile() {
             }}
           >
             <img src={addact} alt="Settings" className="settings-icon" />
-            <p>Organise</p>
+            <p className="mobile-remove">Organise</p>
           </div>
           <div
             className={profileMenu === "myactivities" ? "active" : ""}
@@ -78,7 +79,16 @@ export default function Profile() {
               alt="Settings"
               className="settings-icon"
             />
-            <p>My Activities</p>
+            <p className="mobile-remove">My Activities</p>
+          </div>
+          <div
+            className={profileMenu === "attending" ? "active" : ""}
+            onClick={() => {
+              setprofileMenu("attending");
+            }}
+          >
+            <img src={attend} alt="Settings" className="settings-icon" />
+            <p className="mobile-remove">Participations</p>
           </div>
           <div
             className={profileMenu === "settings" ? "active" : ""}
@@ -87,7 +97,7 @@ export default function Profile() {
             }}
           >
             <img src={settings} alt="Settings" className="settings-icon" />
-            <p>Parametres</p>
+            <p className="mobile-remove">Parametres</p>
           </div>
         </div>
         <div>

@@ -179,3 +179,15 @@ ul {
   align-items: center;
   font-size: 18px;
 }
+
+@media (max-width: 950px) {
+  .mobile-remove {
+    display: none;
+  }
+  .settings-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 0;
+    padding: 5px;
+  }
+}
