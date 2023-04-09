@@ -1,7 +1,7 @@
 export let activities = [
   {
     id: 1,
-    name: "Picnic in the park",
+    name: "Bowling",
     organizer: "John Doe",
     email: "john@example.com",
     description: "Join us for a fun-filled picnic in the park!",
@@ -25,7 +25,32 @@ export let activities = [
   },
   {
     id: 11,
-    name: "Picnic in the park",
+    name: "Language Exchange",
+    organizer: "John Doe",
+    email: "john@example.com",
+    description: "Join us for a fun-filled picnic in the park!",
+    date: "2023-03-01",
+    timing: "12:00 PM",
+    city: "Rodez",
+    address: "Central Park",
+    participants: ["John", "Ram", "Steve"],
+    comments: [
+      {
+        user: "Steve",
+        comment: "hello, where exactly it is ?",
+        time: "08/04/2023, 16:30:39",
+      },
+      {
+        user: "Ram",
+        comment: "thank you so much for organizing it",
+        time: "08/04/2023, 17:33:39",
+      },
+    ],
+  },
+
+  {
+    id: 12,
+    name: "Bowling",
     organizer: "John Doe",
     email: "john@example.com",
     description: "Join us for a fun-filled picnic in the park!",
@@ -49,7 +74,7 @@ export let activities = [
   },
   {
     id: 2,
-    name: "Barbecue party",
+    name: "Hangout at a bar",
     organizer: "Jane Smith",
     email: "john@example.com",
     description: "Come over for some delicious barbecue and drinks!",

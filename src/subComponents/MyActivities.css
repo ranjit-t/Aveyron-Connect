@@ -1,6 +1,7 @@
 .my-activities-page {
   /* min-width: 100%; */
   /* min-width: 55vh; */
+  overflow-y: scroll;
 }
 .my-activities-list {
   background-color: #afc5e821;
@@ -9,6 +10,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
   align-items: center;
 }
 .my-activities-map {
@@ -17,8 +20,16 @@
   width: 100%;
   padding: 5px 100px;
   margin-bottom: 5px;
-  flex-grow: 1;
+
+  /* flex-grow: 1; */
+  /* cursor: pointer; */
+}
+.my-activities-map div {
+  margin-left: auto;
+  margin-right: auto;
   cursor: pointer;
+  width: fit-content;
+  min-width: 50%;
 }
 .past-activities {
   background-color: #a4b6d253;

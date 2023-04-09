@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./Profile.css";
 import settings from "../Images/settings.png";
+import myactivitiesIcon from "../Images/myactivities.png";
+import addact from "../Images/addact.png";
 
 import verified from "../Images/verified.png";
 import UserSettings from "../subComponents/UserSettings";
@@ -62,7 +64,7 @@ export default function Profile() {
               setprofileMenu("organise");
             }}
           >
-            <img src={settings} alt="Settings" className="settings-icon" />
+            <img src={addact} alt="Settings" className="settings-icon" />
             <p>Organise</p>
           </div>
           <div
@@ -71,7 +73,11 @@ export default function Profile() {
               setprofileMenu("myactivities");
             }}
           >
-            <img src={settings} alt="Settings" className="settings-icon" />
+            <img
+              src={myactivitiesIcon}
+              alt="Settings"
+              className="settings-icon"
+            />
             <p>My Activities</p>
           </div>
           <div

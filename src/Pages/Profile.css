@@ -155,7 +155,7 @@ ul {
     font-size: 12px;
   }
   .profile-container {
-    height: 70vh;
+    min-height: 70vh;
   }
 }
 .add-business-btn {
