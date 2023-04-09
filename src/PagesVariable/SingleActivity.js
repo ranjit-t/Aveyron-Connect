@@ -68,16 +68,22 @@ export default function SingleActivity() {
       </p>
       <p>
         <b>Participants: </b>
-        {act.participants && act.participants.join(", ")}
+        {act.participants &&
+          act.participants.map((part) => {
+            return <p>{part.user}</p>;
+          })}
       </p>
       <div>
-        {act.participants.includes("User") ? (
+        {act.participants.some(
+          (participant) => participant.user === "Amélie"
+        ) ? (
           <button
             className="attend-button not-attending"
             onClick={() => {
               const updatedParticipants = act.participants.filter(
-                (participant) => participant !== "User"
+                (participant) => participant.user !== "Amélie"
               );
+              console.log(updatedParticipants);
               const updatedAct = { ...act, participants: updatedParticipants };
               setAct(updatedAct);
             }}
@@ -88,8 +94,11 @@ export default function SingleActivity() {
           <button
             className="attend-button "
             onClick={() => {
-              if (!act.participants.includes("User")) {
-                const updatedParticipants = [...act.participants, "User"];
+              if (!act.participants.includes("Amélie")) {
+                const updatedParticipants = [
+                  ...act.participants,
+                  { user: "Amélie", email: "ameli@gmail.com" },
+                ];
                 const updatedAct = {
                   ...act,
                   participants: updatedParticipants,

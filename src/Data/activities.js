@@ -9,7 +9,11 @@ export let activities = [
     timing: "12:00 PM",
     city: "Rodez",
     address: "Central Park",
-    participants: ["John", "Ram", "Steve"],
+    participants: [
+      { user: "John", email: "john@example.com" },
+      { user: "Ram", email: "ram@example.com" },
+      { user: "Steve", email: "Steve@example.com" },
+    ],
     comments: [
       {
         user: "Steve",
@@ -58,7 +62,7 @@ export let activities = [
     timing: "12:00 PM",
     city: "Rodez",
     address: "Central Park",
-    participants: ["John", "Ram", "Steve"],
+    participants: [{ user: "John", email: "john@example.com" }],
     comments: [
       {
         user: "Steve",

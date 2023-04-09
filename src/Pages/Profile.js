@@ -9,6 +9,7 @@ import verified from "../Images/verified.png";
 import UserSettings from "../subComponents/UserSettings";
 import OrganiseActivity from "../subComponents/OrganiseActivity";
 import MyActivities from "../subComponents/MyActivities";
+import Participations from "../subComponents/Participations";
 
 export default function Profile() {
   const currentUserEmail = "john@example.com";
@@ -107,6 +108,9 @@ export default function Profile() {
         </div>
         <div>
           {profileMenu === "organise" && <OrganiseActivity></OrganiseActivity>}
+        </div>
+        <div>
+          {profileMenu === "attending" && <Participations></Participations>}
         </div>
         <div>{profileMenu === "settings" && <UserSettings></UserSettings>}</div>
       </div>
