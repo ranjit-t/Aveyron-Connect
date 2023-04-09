@@ -10,18 +10,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
   width: 50%;
 }
-.profile-container .profile-menu {
+.profile-menu {
   display: flex;
   column-gap: 10px;
+  margin-bottom: 30px;
 }
-.profile-container .profile-menu div {
+.profile-menu div {
   font-size: 14px;
   display: flex;
   align-items: center;
-  /* border: 1px solid grey; */
   padding: 0 10px;
   cursor: pointer;
   border-radius: 10px;
@@ -149,7 +149,13 @@ ul {
     margin-top: 20px;
   }
   .profile-menu {
-    flex-direction: column;
+    column-gap: 2px;
+  }
+  .profile-menu div {
+    font-size: 12px;
+  }
+  .profile-container {
+    height: 70vh;
   }
 }
 .add-business-btn {
