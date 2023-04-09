@@ -10,7 +10,7 @@
   width: 100px;
   height: 100px;
   object-fit: cover;
-  /* border-radius: 50%; */
+  border-radius: 20px;
 }
 .user-profile-verified {
   display: flex;
@@ -23,7 +23,7 @@
 }
 .karma-score {
   margin-top: -3px;
-  background-color: #008cba;
+  background-color: #a43f00;
   width: fit-content;
   padding: 10px;
   color: white;

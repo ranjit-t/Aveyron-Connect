@@ -1,16 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Profile.css";
 import settings from "../Images/settings.png";
-import marketing from "../Images/marketing.png";
-import euro from "../Images/euro.png";
-import eco from "../Images/eco.png";
+// import marketing from "../Images/marketing.png";
+// import euro from "../Images/euro.png";
+// import eco from "../Images/eco.png";
+import verified from "../Images/verified.png";
 
 export default function Profile() {
   const [name, setName] = useState("Amélie");
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
-  const [isProfileOpen, setIsProfileOpen] = useState(false);
+  // const [isProfileOpen, setIsProfileOpen] = useState(false);
 
+  //Karma Score
+  const [count, setCount] = useState(0);
+  const currentScore = 160;
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      if (count < currentScore) {
+        setCount((prevCount) => prevCount + 1);
+      }
+    }, 3);
+    return () => clearInterval(intervalId);
+  }, [count, currentScore]);
+
+  const [profileMenu, setprofileMenu] = useState("organise");
   const handleNameChange = (e) => {
     setName(e.target.value);
   };
@@ -31,82 +46,140 @@ export default function Profile() {
     // navigate("/add-activity");
   };
 
-  const handleProfileClick = () => {
-    setIsProfileOpen(!isProfileOpen);
-  };
-
   return (
-    <div className="profile">
-      <div className="profile-container">
-        <div className="profile-header">
-          <h3>Hello, Amélie!</h3>
-          <img
-            src={settings}
-            alt="Settings"
-            className="settings-icon"
-            onClick={handleProfileClick}
-            style={{ cursor: "pointer" }}
-          />
+    <div className="profile-details">
+      <div className="own-user-profile" style={{ textAlign: "center" }}>
+        <img
+          className="user-profile-photo"
+          src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+          alt="user profile"
+        />
+        <div className="user-profile-verified">
+          <h2>Amélie Puech</h2>
+          <img src={verified} alt="verified" />
         </div>
-        {isProfileOpen && (
-          <div className="profile-settings">
-            <div className="profile-setting">
-              <label>Email:</label>
-              <input type="email" disabled value="example@example.com" />
-              <br />
-              <label htmlFor="name">Name:</label>
-              <input
-                type="text"
-                id="name"
-                value={name}
-                onChange={handleNameChange}
-              />
-            </div>
-            <div className="profile-setting">
-              <label htmlFor="current-password">Current Password:</label>
-              <input
-                type="password"
-                id="current-password"
-                value={currentPassword}
-                onChange={handleCurrentPasswordChange}
-              />
-            </div>
-            <div className="profile-setting">
-              <label htmlFor="new-password">New Password:</label>
-              <input
-                type="password"
-                id="new-password"
-                value={newPassword}
-                onChange={handleNewPasswordChange}
-              />
-            </div>
-            <button
-              className="add-btn"
-              onClick={handleSaveChanges}
-              style={{ marginBottom: "50px" }}
-            >
-              Save Changes
-            </button>
-          </div>
-        )}
-        <div className="add-activity-container">
-          <p>
-            <b>How are you doing, Today ?</b>{" "}
-          </p>
-          <p>
-            In a mood to Organise an activity in your area and connect people
-            around you ? then why late ? Go and add your activity on
-            Aveyron-Connect.
-          </p>
-          <div>
-            <button className="add-btn" onClick={handleOrganizeActivity}>
-              Add Activity
-            </button>
-          </div>
-        </div>
-        <br></br>
 
-        <hr style={{ width: "70%" }}></hr>
+        <p className="karma-score">
+          <b>Karma Score:</b>
+          {count}
+        </p>
+        <p>
+          <b>Age:</b>28
+        </p>
+        <p>
+          <b>City:</b>Rodez
+        </p>
+        <p>
+          <b>Activities Organized:</b>5
+        </p>
+        <p>
+          <b>Activities Attented:</b>12
+        </p>
+      </div>
+      <div className="profile-container">
+        <div className="profile-menu">
+          <div
+            className={profileMenu === "organise" ? "active" : ""}
+            onClick={() => {
+              setprofileMenu("organise");
+            }}
+          >
+            <img src={settings} alt="Settings" className="settings-icon" />
+            <p>Organise</p>
+          </div>
+          <div
+            className={profileMenu === "activities" ? "active" : ""}
+            onClick={() => {
+              setprofileMenu("activities");
+            }}
+          >
+            <img src={settings} alt="Settings" className="settings-icon" />
+            <p>My Activities</p>
+          </div>
+          <div
+            className={profileMenu === "settings" ? "active" : ""}
+            onClick={() => {
+              setprofileMenu("settings");
+            }}
+          >
+            <img src={settings} alt="Settings" className="settings-icon" />
+            <p>Parametres</p>
+          </div>
+        </div>
+        <div>
+          {profileMenu === "organise" && (
+            <div>
+              <div className="profile-header">
+                <h3>Hello, Amélie!</h3>
+              </div>
+
+              <div className="add-activity-container">
+                <p>
+                  <b>How are you doing, Today ?</b>{" "}
+                </p>
+                <p>
+                  In a mood to Organise an activity in your area and connect
+                  people around you ? then why late ? Go and add your activity
+                  on Aveyron-Connect.
+                </p>
+                <div>
+                  <button className="add-btn" onClick={handleOrganizeActivity}>
+                    Add Activity
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+        <div>
+          {profileMenu === "settings" && (
+            <div className="profile-settings">
+              <div className="profile-setting">
+                <label>Email:</label>
+                <input type="email" disabled value="example@example.com" />
+                <br />
+                <label htmlFor="name">Name:</label>
+                <input
+                  type="text"
+                  id="name"
+                  value={name}
+                  onChange={handleNameChange}
+                />
+              </div>
+              <div className="profile-setting">
+                <label htmlFor="current-password">Current Password:</label>
+                <input
+                  type="password"
+                  id="current-password"
+                  value={currentPassword}
+                  onChange={handleCurrentPasswordChange}
+                />
+              </div>
+              <div className="profile-setting">
+                <label htmlFor="new-password">New Password:</label>
+                <input
+                  type="password"
+                  id="new-password"
+                  value={newPassword}
+                  onChange={handleNewPasswordChange}
+                />
+              </div>
+              <button
+                className="add-btn"
+                onClick={handleSaveChanges}
+                style={{ marginBottom: "50px" }}
+              >
+                Save Changes
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* <hr style={{ width: "70%" }}></hr>
 
         <div className="pro-account-proposal">
           <h3>Are you a Business Owner or Event Planner ?</h3>
@@ -155,25 +228,4 @@ export default function Profile() {
               Sign Up for a Pro Account
             </button>
           </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-/* <div>
-        <div>
-          <p>Want to Organise an Activity ?</p>
-          <button className="add-btn" onClick={handleOrganizeActivity}>
-            Add Activity
-          </button>
-        </div>
-        <div>
-          <p>Want to Add your Event ?</p>
-          <button className="add-btn">Add Event</button>
-        </div>
-        <div>
-          <p>Want to Add your Business ?</p>
-          <button className="add-btn">Business</button>
-        </div>
-      </div> */
+        </div> */

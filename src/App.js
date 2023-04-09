@@ -63,11 +63,11 @@ function App() {
             <NavLink className="nav-link" to="/profile">
               My Profile
             </NavLink>
-            <NavLink className="nav-link" to="/event-search">
+            {/* <NavLink className="nav-link" to="/event-search">
               Events
-            </NavLink>
+            </NavLink> */}
             <NavLink className="nav-link" to="/activity-search">
-              Activities
+              Sorties
             </NavLink>
           </div>
         </header>
