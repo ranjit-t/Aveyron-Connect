@@ -1,6 +1,12 @@
 import React, { useState } from "react";
+import { auth, db, storage } from "../Firebase/config";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { collection, doc, setDoc } from "firebase/firestore";
 
 import "./SignupForm.css";
+
 const SignupForm = () => {
   const [displayName, setDisplayName] = useState("");
   const [email, setEmail] = useState("");
@@ -8,7 +14,9 @@ const SignupForm = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [dob, setDob] = useState("");
   const [profilePhoto, setProfilePhoto] = useState("");
+  const [userUID, setuserUID] = useState("");
   const [profilePhotoURL, setProfilePhotoURL] = useState("");
+
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = async (event) => {
@@ -24,74 +32,69 @@ const SignupForm = () => {
       return;
     }
 
-    const postImage = async () => {
-      setErrorMessage("uploading...");
+    setErrorMessage("Submitting...");
 
+    const uploadPhotoFunc = async () => {
+      const imageRef = ref(storage, `${email}.jpg`);
+
+      const uploadTask = uploadBytesResumable(imageRef, profilePhoto);
+
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {},
+        (error) => {
+          console.log(error);
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
+            setProfilePhotoURL(downloadURL);
+          });
+        }
+      );
+    };
+    const signUpFunc = async () => {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      setuserUID(userCredential.user.uid);
+    };
+
+    const storingData = async () => {
       try {
-        // Upload profile photo to Cloudinary
-        const formData = new FormData();
-        formData.append("file", profilePhoto);
-        formData.append("upload_preset", "aveyron-connect");
-
-        const response = await fetch(
-          "https://api.cloudinary.com/v1_1/dvettesp0/image/upload",
-          {
-            method: "POST",
-            body: formData,
-          }
-        );
-
-        const result = await response.json();
-        // const profilePhotoURL = result.secure_url;
-        setProfilePhotoURL(result.secure_url);
-        setErrorMessage("uploaded and submitting data...");
+        const userData = {
+          userID: userUID,
+          displayName: displayName,
+          email: email,
+          dob: dob,
+          password: password,
+          profilePhoto: profilePhotoURL,
+        };
+        const userDocRef = doc(collection(db, "users"), userUID);
+        await setDoc(userDocRef, userData);
+        console.log("User data stored successfully");
       } catch (error) {
         console.error(error);
-        setErrorMessage("Failed to upload profile photo.");
+        setErrorMessage("Error storing user data. Please try again later.");
       }
     };
 
-    const postData = async () => {
-      const data = {
-        userID: Math.floor(Math.random() * 1000),
-        displayName: displayName,
-        email: email,
-        password: password,
-        dob: dob,
-        profilePhoto: profilePhotoURL,
-      };
-      alert(JSON.stringify(data));
-      fetch("http://localhost:3001/signupdata", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      })
-        .then((response) => {
-          if (response.ok) {
-            setErrorMessage("User Signed up successfully");
-            console.log(data);
-            // setErrorMessage("Registered...");
-          } else if (response.status === 400) {
-            setErrorMessage("Email is already in use");
-          } else {
-            setErrorMessage("Oops, there is an error");
-          }
-        })
-        .catch((error) => {
-          console.error(error);
-          setErrorMessage("Internal server error");
-        });
-    };
-    await postImage();
-    await postData();
+    try {
+      await uploadPhotoFunc();
+      await signUpFunc();
+      await storingData();
+      setErrorMessage("Registered successfully");
+    } catch (error) {
+      console.error(error);
+      setErrorMessage("Error registering user. Please try again later.");
+    }
   };
 
   const errorClass = errorMessage
     ? errorMessage.includes("Submitting...")
       ? "form-submitting"
-      : errorMessage.includes("successfully")
+      : errorMessage.includes("Registered successfully")
       ? "form-success"
       : "form-error"
     : "";
