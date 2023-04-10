@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { auth, db, storage } from "../Firebase/config";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { collection, doc, setDoc } from "firebase/firestore";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 import "./SignupForm.css";
 
@@ -13,9 +15,8 @@ const SignupForm = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [dob, setDob] = useState("");
+  const [city, setCity] = useState("");
   const [profilePhoto, setProfilePhoto] = useState("");
-  const [userUID, setuserUID] = useState("");
-  const [profilePhotoURL, setProfilePhotoURL] = useState("");
 
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -34,60 +35,71 @@ const SignupForm = () => {
 
     setErrorMessage("Submitting...");
 
-    const uploadPhotoFunc = async () => {
+    try {
+      let photoURL;
       const imageRef = ref(storage, `${email}.jpg`);
 
       const uploadTask = uploadBytesResumable(imageRef, profilePhoto);
 
-      uploadTask.on(
-        "state_changed",
-        (snapshot) => {},
-        (error) => {
-          console.log(error);
-        },
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
-            setProfilePhotoURL(downloadURL);
-          });
-        }
-      );
-    };
-    const signUpFunc = async () => {
+      // Wait for the upload task to complete before updating the profile photo URL
+      await new Promise((resolve, reject) => {
+        uploadTask.on(
+          "state_changed",
+          (snapshot) => {},
+          (error) => {
+            reject(error);
+          },
+          () => {
+            getDownloadURL(uploadTask.snapshot.ref)
+              .then((downloadURL) => {
+                // setProfilePhotoURL(downloadURL);
+                photoURL = downloadURL;
+                resolve();
+              })
+              .catch((error) => {
+                reject(error);
+              });
+          }
+        );
+      });
+
+      // Wait for the user to be created before setting the user UID
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
         password
       );
-      setuserUID(userCredential.user.uid);
-    };
+      // setuserUID(userCredential.user.uid);
 
-    const storingData = async () => {
-      try {
-        const userData = {
-          userID: userUID,
-          displayName: displayName,
-          email: email,
-          dob: dob,
-          password: password,
-          profilePhoto: profilePhotoURL,
-        };
-        const userDocRef = doc(collection(db, "users"), userUID);
-        await setDoc(userDocRef, userData);
-        console.log("User data stored successfully");
-      } catch (error) {
-        console.error(error);
-        setErrorMessage("Error storing user data. Please try again later.");
-      }
-    };
+      const userUID = userCredential.user.uid;
 
-    try {
-      await uploadPhotoFunc();
-      await signUpFunc();
-      await storingData();
-      setErrorMessage("Registered successfully");
+      // Wait for the user profile to be updated before storing user data
+      const user = auth.currentUser;
+      await updateProfile(user, {
+        displayName: displayName,
+        photoURL: photoURL,
+        dob: dob,
+      });
+
+      // Store user data in the database
+      const userData = {
+        userID: userUID,
+        displayName: displayName,
+        email: email,
+        dob: dob,
+        city: city,
+        password: password,
+        profilePhoto: photoURL,
+        organized: 0,
+        participated: 0,
+      };
+      const userDocRef = doc(collection(db, "users"), userUID);
+      await setDoc(userDocRef, userData);
+
+      setErrorMessage("Registered");
     } catch (error) {
-      console.error(error);
       setErrorMessage("Error registering user. Please try again later.");
+      console.log(error);
     }
   };
 
@@ -117,6 +129,7 @@ const SignupForm = () => {
             required
           />
         </div>
+
         <div className="form-field">
           <label htmlFor="email" className="form-label">
             Email
@@ -159,7 +172,7 @@ const SignupForm = () => {
             required
           />
         </div>
-        <div className="form-field">
+        {/* <div className="form-field">
           <label htmlFor="dob" className="form-label">
             Date of Birth
           </label>
@@ -170,6 +183,37 @@ const SignupForm = () => {
             className="form-input"
             value={dob}
             onChange={(event) => setDob(event.target.value)}
+            required
+          />
+        </div> */}
+        <div className="form-field">
+          <label htmlFor="dob" className="form-label">
+            Date of Birth
+          </label>
+          <DatePicker
+            id="dob"
+            name="dob"
+            className="form-input"
+            selected={dob}
+            onChange={(date) => setDob(date)}
+            dateFormat="dd/MM/yyyy"
+            showYearDropdown
+            scrollableYearDropdown
+            yearDropdownItemNumber={100}
+            required
+          />
+        </div>
+        <div className="form-field">
+          <label htmlFor="city" className="form-label">
+            City
+          </label>
+          <input
+            type="text"
+            id="city"
+            name="city"
+            className="form-input"
+            value={city}
+            onChange={(event) => setCity(event.target.value)}
             required
           />
         </div>

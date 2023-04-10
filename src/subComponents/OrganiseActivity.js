@@ -1,14 +1,24 @@
 import React from "react";
+import useUsers from "../Data/AllUsers";
+import { signedUser } from "../Firebase/config";
 
 export default function OrganiseActivity() {
+  const allUsers = useUsers();
+  const current = allUsers.filter((doc) => doc.userID === signedUser.uid)[0];
+  // console.log(current[0]);
+
   const handleOrganizeActivity = () => {
     // navigate("/add-activity");
   };
+
   return (
     <div>
       <div>
         <div className="profile-header">
-          <h3>Hello, Amélie!</h3>
+          <h3>
+            Hello, <br></br>
+            <span>{current ? current.displayName : " Amélie!"}</span>
+          </h3>
         </div>
 
         <div className="add-activity-container">

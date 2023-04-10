@@ -1,0 +1,13 @@
+.CreateActivity-Page {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.CreateActivity-Page form {
+  background-color: rgba(128, 128, 128, 0.276);
+  margin: 50px;
+}
+.CreateActivity-Page form input,
+.CreateActivity-Page form textarea {
+  max-width: 500px;
+}

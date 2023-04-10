@@ -34,6 +34,7 @@ import Home from "./Pages/Home";
 import Footer from "./Pages/Footer";
 import SingleActivity from "./PagesVariable/SingleActivity";
 import UserProfile from "./PagesVariable/UserProfile";
+import CreateActivity from "./Pages/CreateActivity";
 
 function App() {
   const [isOpen, setOpen] = useState(false);
@@ -169,6 +170,10 @@ function App() {
             element={<UserProfile></UserProfile>}
           />
           <Route path="/add-event" element={<AddEvent></AddEvent>} />
+          <Route
+            path="/create-activity"
+            element={<CreateActivity></CreateActivity>}
+          />
         </Routes>
       </BrowserRouter>
       <Footer></Footer>

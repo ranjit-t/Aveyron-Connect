@@ -1,30 +1,27 @@
-import React from "react";
-import { useFormik } from "formik";
-import * as Yup from "yup";
+import React, { useState } from "react";
 import "./LoginForm.css";
+import { auth } from "../Firebase/config";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const LoginForm = () => {
-  const formik = useFormik({
-    initialValues: {
-      email: "",
-      password: "",
-    },
-    validationSchema: Yup.object({
-      email: Yup.string().email("Invalid email address").required("Required"),
-      password: Yup.string().required("Required"),
-    }),
-    onSubmit: (values, { setSubmitting }) => {
-      setTimeout(() => {
-        alert(JSON.stringify(values, null, 2));
-        setSubmitting(false);
-      }, 400);
-    },
-  });
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      setErrorMessage("logged in");
+    } catch (error) {
+      setErrorMessage(error.message);
+    }
+  };
 
   return (
     <div className="form-page">
       <h1 className="form-title">Log in</h1>
-      <form onSubmit={formik.handleSubmit} className="login-form">
+      <form onSubmit={handleSubmit} className="login-form">
         <div className="form-field">
           <label htmlFor="email" className="form-label">
             Email
@@ -33,14 +30,11 @@ const LoginForm = () => {
             type="email"
             id="email"
             name="email"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.email}
+            onChange={(event) => setEmail(event.target.value)}
+            value={email}
             className="form-input"
+            required
           />
-          {formik.touched.email && formik.errors.email ? (
-            <div className="form-error">{formik.errors.email}</div>
-          ) : null}
         </div>
 
         <div className="form-field">
@@ -51,24 +45,18 @@ const LoginForm = () => {
             type="password"
             id="password"
             name="password"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.password}
+            onChange={(event) => setPassword(event.target.value)}
+            value={password}
             className="form-input"
+            required
           />
-          {formik.touched.password && formik.errors.password ? (
-            <div className="form-error">{formik.errors.password}</div>
-          ) : null}
         </div>
 
-        <button
-          type="submit"
-          disabled={formik.isSubmitting}
-          className="form-submit-btn"
-        >
+        <button type="submit" className="form-submit-btn">
           Log in
         </button>
       </form>
+      {errorMessage && <div className="form-error">{errorMessage}</div>}
     </div>
   );
 };
