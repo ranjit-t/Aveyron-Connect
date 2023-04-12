@@ -12,19 +12,19 @@ export default function Footer() {
       <br></br>
       <div className="footer-links">
         <ul>
-          <li>Home</li>
-          <li>Login</li>
-          <li>Signup</li>
+          <li>Page d'accueil</li>
+          <li>S'inscrire</li>
         </ul>
         <ul>
-          <li>Search Activities</li>
-          <li>Search Business Stores</li>
-          <li>Search Events</li>
+          <li>Mon profil</li>
+          <li>Connexion</li>
         </ul>
         <ul>
-          <li>Add Activities</li>
+          {/* <li>Add Activities</li>
           <li>Add Business Stores</li>
-          <li>Add Events</li>
+          <li>Add Events</li> */}
+          <li>Rechercher des Sorties</li>
+          <li>Créer des sorties</li>
         </ul>
       </div>
       <div>

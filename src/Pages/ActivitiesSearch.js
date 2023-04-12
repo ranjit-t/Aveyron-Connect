@@ -1,7 +1,8 @@
-import { activities } from "../Data/activities";
+// import { activities } from "../Data/activities";
 import "./ActivitesSearch.css";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import useActivities from "../Data/AllActivities";
 
 import React, { useState } from "react";
 
@@ -11,7 +12,14 @@ export default function ActivitiesSearch() {
   const [searchDate, setSearchDate] = useState("");
   const navigate = useNavigate();
 
-  const activitiesFilteredList = activities.filter(
+  const allActivities = useActivities();
+
+  // const x = localStorage.setItem(
+  //   "allActivities",
+  //   JSON.stringify(allActivities)
+  // );
+  // console.log(x);
+  const activitiesFilteredList = allActivities.filter(
     (act) =>
       act.name.toLowerCase().includes(searchName.toLowerCase()) &&
       act.city.toLowerCase().includes(searchCity.toLowerCase()) &&

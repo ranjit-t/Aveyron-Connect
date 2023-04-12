@@ -4,8 +4,11 @@ import "./Home.css";
 import marketing from "../Images/marketing.png";
 import euro from "../Images/euro.png";
 import eco from "../Images/eco.png";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
+  const navigate = useNavigate();
+
   return (
     <div className="home-page">
       <div className="home-section1">
@@ -21,12 +24,12 @@ export default function Home() {
         </div>
         <img
           className="home-section1-img"
-          src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+          src="https://images.unsplash.com/photo-1547573855-87265780bfbd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1529&q=80"
           alt="People"
         ></img>
       </div>
       <div className="home-section2">
-        <div className="explore-events">
+        {/* <div className="explore-events">
           <h2>Events</h2>
           <p>
             With Aveyron Connect, you'll never miss a local event again. Our
@@ -40,7 +43,7 @@ export default function Home() {
           <div>
             <button>Find Events</button>
           </div>
-        </div>
+        </div> */}
         <div className="explore-activities">
           <h2>Activities</h2>
           <p>
@@ -52,7 +55,13 @@ export default function Home() {
             alt="Communities"
           ></img>
           <div>
-            <button>Find Activities</button>
+            <button
+              onClick={() => {
+                navigate("/activity-search");
+              }}
+            >
+              Find Activities
+            </button>
           </div>
         </div>
         <div className="explore-stores">
@@ -66,7 +75,7 @@ export default function Home() {
             alt="Communities"
           ></img>
           <div>
-            <button>Find Stores</button>
+            <button>Bientot</button>
           </div>
         </div>
       </div>
@@ -90,7 +99,14 @@ export default function Home() {
             breeze.
           </p>
           <div>
-            <button className="add-activity-btn">Organise An Activity</button>
+            <button
+              className="add-activity-btn"
+              onClick={() => {
+                navigate("/profile");
+              }}
+            >
+              Organise An Activity
+            </button>
           </div>
         </div>
 
@@ -170,7 +186,7 @@ export default function Home() {
               // onClick={handleOrganizeActivity}
               style={{ marginBottom: "50px" }}
             >
-              Sign Up for a Pro Account
+              Contact Us
             </button>
           </div>
         </div>

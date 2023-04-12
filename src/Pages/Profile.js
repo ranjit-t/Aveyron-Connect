@@ -17,8 +17,6 @@ import { doc, getDoc } from "firebase/firestore";
 // import useUsers from "../Data/AllUsers";
 
 export default function Profile() {
-  const currentUserEmail = "john@example.com";
-
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -38,7 +36,8 @@ export default function Profile() {
   //Karma Score
   const [count, setCount] = useState(-100);
   const currentScore = user
-    ? parseInt(user.participated) * 5 + parseInt(user.organized) * 20
+    ? parseInt(user.participated.length) * 5 +
+      parseInt(user.organized.length) * 20
     : 0;
 
   useEffect(() => {
@@ -50,7 +49,7 @@ export default function Profile() {
     return () => clearInterval(intervalId);
   }, [count, currentScore]);
 
-  const [profileMenu, setprofileMenu] = useState("organise");
+  const [profileMenu, setprofileMenu] = useState("myactivities");
 
   //age
   function calculateAge(timestamp) {
@@ -75,7 +74,7 @@ export default function Profile() {
               alt="user profile"
             />
             <div className="user-profile-verified">
-              <h2>{user ? user.displayName : "Amélie Puech"}</h2>
+              <h2>{user ? user.displayName : "User"}</h2>
               <img src={verified} alt="verified" />
             </div>
 
@@ -89,14 +88,14 @@ export default function Profile() {
             </p>
             <p>
               <b>City:</b>
-              {user ? user.city : "Millau"}
+              {user ? user.city : "Rodez"}
             </p>
             <p>
-              <b>Activities Organized:</b> {user.organized}
+              <b>Activities Organized:</b> {user.organized.length}
             </p>
             <p>
               <b>Activities Attented:</b>
-              {user.participated}
+              {user.participated.length}
             </p>
           </div>
           <div className="profile-container">
@@ -143,11 +142,7 @@ export default function Profile() {
               </div>
             </div>
             <div>
-              {profileMenu === "myactivities" && (
-                <MyActivities
-                  currentUserEmail={currentUserEmail}
-                ></MyActivities>
-              )}
+              {profileMenu === "myactivities" && <MyActivities></MyActivities>}
             </div>
             <div>
               {profileMenu === "organise" && (

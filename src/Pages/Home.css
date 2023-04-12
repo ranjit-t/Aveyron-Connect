@@ -9,7 +9,7 @@
 }
 .home-section2 {
   display: grid;
-  grid-template-columns: 30% 30% 30%;
+  grid-template-columns: 40% 40%;
   justify-content: center;
   align-items: center;
   column-gap: 20px;

@@ -6,6 +6,7 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { collection, doc, setDoc } from "firebase/firestore";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useNavigate } from "react-router-dom";
 
 import "./SignupForm.css";
 
@@ -19,6 +20,8 @@ const SignupForm = () => {
   const [profilePhoto, setProfilePhoto] = useState("");
 
   const [errorMessage, setErrorMessage] = useState("");
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -90,13 +93,15 @@ const SignupForm = () => {
         city: city,
         password: password,
         profilePhoto: photoURL,
-        organized: 0,
-        participated: 0,
+        organized: [],
+        participated: [],
       };
       const userDocRef = doc(collection(db, "users"), userUID);
       await setDoc(userDocRef, userData);
 
-      setErrorMessage("Registered");
+      setErrorMessage("Registered successfully");
+
+      navigate("/activity-search");
     } catch (error) {
       setErrorMessage("Error registering user. Please try again later.");
       console.log(error);

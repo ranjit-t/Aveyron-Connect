@@ -1,22 +1,7 @@
-// import "./App.css";
-// import EventsSearch from "./Pages/EventsSearch";
-// import SignupForm from "./Pages/SignupForm";
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <h1>Aveyron Connect</h1>
-//       <EventsSearch></EventsSearch>
-//       <SignupForm></SignupForm>
-//     </div>
-//   );
-// }
-
-// export default App;
+import { auth } from "./Firebase/config";
 
 import "./App.css";
 import EventsSearch from "./Pages/EventsSearch";
-// import Homepage from "./Pages/Homepage";
 import LoginForm from "./Pages/LoginForm";
 import SignupForm from "./Pages/SignupForm";
 import { NavLink, Route, Routes, BrowserRouter } from "react-router-dom";
@@ -26,7 +11,7 @@ import SingleEvent from "./PagesVariable/SingleEvent";
 import Logo from "./Images/aveyron-connect.png";
 
 import { Squash as Hamburger } from "hamburger-react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Profile from "./Pages/Profile";
 import AddEvent from "./PagesToAdd/AddEvent";
 import ActivitiesSearch from "./Pages/ActivitiesSearch";
@@ -34,10 +19,27 @@ import Home from "./Pages/Home";
 import Footer from "./Pages/Footer";
 import SingleActivity from "./PagesVariable/SingleActivity";
 import UserProfile from "./PagesVariable/UserProfile";
-import CreateActivity from "./Pages/CreateActivity";
+import CreateActivity from "./PagesToAdd/CreateActivity";
+import Logout from "./Pages/Logout";
+import { onAuthStateChanged } from "firebase/auth";
 
 function App() {
   const [isOpen, setOpen] = useState(false);
+  const [signedUser, setsignedUser] = useState(null);
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setsignedUser({
+          email: user.email,
+          displayName: user.displayName,
+          photoURL: user.photoURL,
+          uid: user.uid,
+        });
+      } else {
+        setsignedUser(null);
+      }
+    });
+  }, []);
 
   return (
     <div className="App">
@@ -52,24 +54,32 @@ function App() {
             <NavLink className="nav-link" to="/">
               HomePage
             </NavLink>
-            {/* <NavLink className="nav-link" to="/add-event">
-              Add Event
-            </NavLink> */}
-            {/* <NavLink className="nav-link" to="/signup">
-              Signup
-            </NavLink>
-            <NavLink className="nav-link" to="/login">
-              Login
-            </NavLink> */}
-            <NavLink className="nav-link" to="/profile">
-              My Profile
-            </NavLink>
-            {/* <NavLink className="nav-link" to="/event-search">
-              Events
+            {!auth.currentUser && (
+              <NavLink className="nav-link" to="/login">
+                Login
+              </NavLink>
+            )}
+            {!auth.currentUser && (
+              <NavLink className="nav-link" to="/signup">
+                Signup
+              </NavLink>
+            )}
+            {signedUser && (
+              <NavLink className="nav-link" to="/profile">
+                My Profile
+              </NavLink>
+            )}
+            {/* <NavLink className="nav-link" to="/create-activity">
+              Create Activity
             </NavLink> */}
             <NavLink className="nav-link" to="/activity-search">
               Sorties
             </NavLink>
+            {signedUser && (
+              <NavLink className="nav-link" to="/logout">
+                Logout
+              </NavLink>
+            )}
           </div>
         </header>
         <div className="menu-container">
@@ -92,34 +102,42 @@ function App() {
             >
               HomePage
             </NavLink>
-            <NavLink
-              className="nav-link"
-              to="/signup"
-              onClick={() => {
-                setOpen((prev) => !prev);
-              }}
-            >
-              Signup
-            </NavLink>
-            <NavLink
-              className="nav-link"
-              to="/login"
-              onClick={() => {
-                setOpen((prev) => !prev);
-              }}
-            >
-              Login
-            </NavLink>
-            <NavLink
-              className="nav-link"
-              to="/profile"
-              onClick={() => {
-                setOpen((prev) => !prev);
-              }}
-            >
-              My Profile
-            </NavLink>
-            <NavLink
+
+            {!signedUser && (
+              <NavLink
+                className="nav-link"
+                to="/login"
+                onClick={() => {
+                  setOpen((prev) => !prev);
+                }}
+              >
+                Login
+              </NavLink>
+            )}
+            {!signedUser && (
+              <NavLink
+                className="nav-link"
+                to="/signup"
+                onClick={() => {
+                  setOpen((prev) => !prev);
+                }}
+              >
+                Signup
+              </NavLink>
+            )}
+            {signedUser && (
+              <NavLink
+                className="nav-link"
+                to="/profile"
+                onClick={() => {
+                  setOpen((prev) => !prev);
+                }}
+              >
+                My Profile
+              </NavLink>
+            )}
+
+            {/* <NavLink
               className="nav-link"
               to="/add-event"
               onClick={() => {
@@ -127,8 +145,8 @@ function App() {
               }}
             >
               Add Event
-            </NavLink>
-            <NavLink
+            </NavLink> */}
+            {/* <NavLink
               className="nav-link"
               to="/event-search"
               onClick={() => {
@@ -136,7 +154,7 @@ function App() {
               }}
             >
               Events
-            </NavLink>
+            </NavLink> */}
             <NavLink
               className="nav-link"
               to="/activity-search"
@@ -144,8 +162,28 @@ function App() {
                 setOpen((prev) => !prev);
               }}
             >
-              Activities
+              Sorties
             </NavLink>
+            <NavLink
+              className="nav-link"
+              to="/create-activity"
+              onClick={() => {
+                setOpen((prev) => !prev);
+              }}
+            >
+              Create Sorties
+            </NavLink>
+            {signedUser && (
+              <NavLink
+                className="nav-link"
+                to="/logout"
+                onClick={() => {
+                  setOpen((prev) => !prev);
+                }}
+              >
+                Logout
+              </NavLink>
+            )}
           </div>
         </div>
 
@@ -174,6 +212,7 @@ function App() {
             path="/create-activity"
             element={<CreateActivity></CreateActivity>}
           />
+          <Route path="/logout" element={<Logout></Logout>} />
         </Routes>
       </BrowserRouter>
       <Footer></Footer>

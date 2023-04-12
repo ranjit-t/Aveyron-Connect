@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./CreateActivity.css";
 import { signedUser, db } from "../Firebase/config";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 const CreateActivity = () => {
   const [activityName, setActivityName] = useState("");
@@ -10,21 +11,15 @@ const CreateActivity = () => {
   const [time, setTime] = useState("");
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
+  const [errorMessage, setErrorMessage] = useState(""); // new state variable
 
-  const submitActivity = async (newActivity, signedUser) => {
-    try {
-      const docRef = doc(db, "activities", signedUser.uid);
-      await setDoc(docRef, newActivity);
-      console.log("Activity added successfully!");
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    const id = Math.floor(Math.random() * 10000);
     const newActivity = {
-      id: Math.floor(Math.random() * 10000),
+      id: id,
       name: activityName,
       organizer: signedUser.displayName,
       email: signedUser.email,
@@ -38,12 +33,39 @@ const CreateActivity = () => {
       comments: [],
     };
     console.log(newActivity);
-    submitActivity(newActivity, signedUser);
+    try {
+      const docRef = doc(db, "activities", signedUser.uid + id);
+      await setDoc(docRef, newActivity);
+      console.log("Activity added successfully!");
+
+      // Add activity id to the "organized" array in the user's document
+      const userDocRef = doc(db, "users", signedUser.uid);
+      const userDoc = await getDoc(userDocRef);
+      if (userDoc.exists()) {
+        const userData = userDoc.data();
+        const organizedActivities = [...userData.organized, id];
+        await updateDoc(userDocRef, { organized: organizedActivities });
+        console.log(
+          `Activity ${id} added to user ${signedUser.uid}'s organized activities.`
+        );
+
+        // Remove allActivities from localStorage
+        localStorage.removeItem("allActivities");
+        setErrorMessage("Activity added successfully!"); // clear any previous error message
+        setTimeout(() => {
+          navigate(`/profile`);
+        }, 2500);
+      }
+    } catch (error) {
+      console.error(error);
+      setErrorMessage("Failed to create activity. Please try again."); // set error message
+    }
   };
 
   return (
     <div className="CreateActivity-Page">
       <h3>Create Activity</h3>
+      {/* render error message if it exists */}
       <form onSubmit={handleSubmit}>
         <div className="form-field">
           <label htmlFor="activityName" className="form-label">
@@ -118,6 +140,7 @@ const CreateActivity = () => {
             required
           />
         </div>
+
         <div className="form-field">
           <label htmlFor="city" className="form-label">
             City
@@ -133,8 +156,11 @@ const CreateActivity = () => {
           />
         </div>
 
-        <button type="submit">Create</button>
+        <button type="submit" className="btn btn-primary">
+          Create
+        </button>
       </form>
+      {errorMessage && <p className="error-message">{errorMessage}</p>}{" "}
     </div>
   );
 };

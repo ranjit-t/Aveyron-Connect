@@ -1,12 +1,16 @@
 import React from "react";
-import { activities } from "../Data/activities";
+// import { activities } from "../Data/activities";
 import { useNavigate } from "react-router-dom";
+import useActivities from "../Data/AllActivities";
+import { signedUser } from "../Firebase/config";
 
 export default function Participations() {
-  const filteredActivities = activities.filter((activity) => {
+  const allActivities = useActivities();
+
+  const filteredActivities = allActivities.filter((activity) => {
     const participants = activity.participants;
     return participants.some(
-      (participant) => participant.email === "john@example.com"
+      (participant) => participant.email === signedUser.email
     );
   });
   //
@@ -69,7 +73,7 @@ export default function Participations() {
       )}
 
       {upcomingActivities.length === 0 && pastActivities.length === 0 && (
-        <p>You haven't organised anything so far</p>
+        <p>You haven't participated in anything so far</p>
       )}
     </div>
   );

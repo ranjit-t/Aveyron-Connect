@@ -1,14 +1,16 @@
 import React from "react";
 import useUsers from "../Data/AllUsers";
 import { signedUser } from "../Firebase/config";
+import { useNavigate } from "react-router-dom";
 
 export default function OrganiseActivity() {
   const allUsers = useUsers();
   const current = allUsers.filter((doc) => doc.userID === signedUser.uid)[0];
   // console.log(current[0]);
+  const navigate = useNavigate();
 
   const handleOrganizeActivity = () => {
-    // navigate("/add-activity");
+    navigate("/create-activity");
   };
 
   return (

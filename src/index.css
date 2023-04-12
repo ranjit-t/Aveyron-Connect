@@ -1,8 +1,12 @@
-* {
+/* * {
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
+} */
+/* Remove tap highlight color */
+* {
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {

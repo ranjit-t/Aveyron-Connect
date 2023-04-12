@@ -1,16 +1,24 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { activities } from "../Data/activities";
+// import { activities } from "../Data/activities";
 import "./SingleActivity.css";
+import { db, signedUser } from "../Firebase/config";
+import { arrayRemove, doc, getDoc, updateDoc } from "firebase/firestore";
 
 export default function SingleActivity() {
   const navigate = useNavigate();
+
   useEffect(() => {
     window.scrollTo(0, 0);
+    console.log(signedUser);
   }, []);
+
   const [newComment, setNewComment] = useState("");
   const { id } = useParams();
+
+  var activities = JSON.parse(localStorage.getItem("allActivities"));
+
   const [act, setAct] = useState(
     activities.filter((act) => act.id === parseInt(id))[0]
   );
@@ -31,13 +39,9 @@ export default function SingleActivity() {
     }
   };
 
-  //   const handleAttend = () => {
-  //     if (!act.participants.includes("User")) {
-  //       const updatedParticipants = [...act.participants, "User"];
-  //       const updatedAct = { ...act, participants: updatedParticipants };
-  //       setAct(updatedAct);
-  //     }
-  //   };
+  if (!signedUser) {
+    return <p style={{ marginTop: "45px" }}>Goto Activity Search</p>;
+  }
 
   return (
     <div className="single-activity-page">
@@ -69,23 +73,50 @@ export default function SingleActivity() {
       <p>
         <b>Participants: </b>
         {act.participants &&
-          act.participants.map((part) => {
-            return <p>{part.user}</p>;
+          act.participants.map((part, idx) => {
+            const isLast = idx === act.participants.length - 1;
+            const separator = isLast ? "" : ", ";
+            return (
+              <span key={idx}>
+                {part.user}
+                {separator}
+              </span>
+            );
           })}
       </p>
       <div>
         {act.participants.some(
-          (participant) => participant.user === "Amélie"
+          (participant) => participant.email === signedUser.email
         ) ? (
           <button
             className="attend-button not-attending"
-            onClick={() => {
+            onClick={async () => {
               const updatedParticipants = act.participants.filter(
-                (participant) => participant.user !== "Amélie"
+                (participant) => participant.email !== signedUser.email
               );
-              console.log(updatedParticipants);
-              const updatedAct = { ...act, participants: updatedParticipants };
-              setAct(updatedAct);
+
+              const actDocRef = doc(db, "activities", act.uid + act.id);
+              const userDoc = await getDoc(actDocRef);
+              if (userDoc.exists()) {
+                await updateDoc(actDocRef, {
+                  participants: updatedParticipants,
+                });
+
+                //Removing from participated
+                const userDocRef = doc(db, "users", signedUser.uid);
+                const userDoc = await getDoc(userDocRef);
+                if (userDoc.exists()) {
+                  await updateDoc(userDocRef, {
+                    participated: arrayRemove(act.id),
+                  });
+                }
+
+                const updatedAct = {
+                  ...act,
+                  participants: updatedParticipants,
+                };
+                setAct(updatedAct);
+              }
             }}
           >
             Remove Attending
@@ -93,18 +124,43 @@ export default function SingleActivity() {
         ) : (
           <button
             className="attend-button "
-            onClick={() => {
-              if (!act.participants.includes("Amélie")) {
-                const updatedParticipants = [
-                  ...act.participants,
-                  { user: "Amélie", email: "ameli@gmail.com" },
-                ];
+            onClick={async () => {
+              const updatedParticipants = [
+                ...act.participants,
+                { user: signedUser.displayName, email: signedUser.email },
+              ];
+
+              const actDocRef = doc(db, "activities", act.uid + act.id);
+              const actDoc = await getDoc(actDocRef);
+              if (actDoc.exists()) {
+                await updateDoc(actDocRef, {
+                  participants: updatedParticipants,
+                });
                 const updatedAct = {
                   ...act,
                   participants: updatedParticipants,
                 };
                 setAct(updatedAct);
               }
+              // adding to participated
+              const userDocRef = doc(db, "users", signedUser.uid);
+              const userDoc = await getDoc(userDocRef);
+              if (userDoc.exists()) {
+                const userData = userDoc.data();
+                const participatedActivities = [
+                  ...userData.participated,
+                  act.id,
+                ];
+                await updateDoc(userDocRef, {
+                  participated: participatedActivities,
+                });
+                console.log(
+                  `Activity ${id} added to user ${signedUser.uid}'s organized activities.`
+                );
+              }
+
+              // // Remove allActivities from localStorage
+              // localStorage.removeItem("allActivities");
             }}
           >
             Attend

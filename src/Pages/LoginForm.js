@@ -2,17 +2,20 @@ import React, { useState } from "react";
 import "./LoginForm.css";
 import { auth } from "../Firebase/config";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      setErrorMessage("logged in");
+      // setErrorMessage("logged in");
+      navigate("/activity-search");
     } catch (error) {
       setErrorMessage(error.message);
     }

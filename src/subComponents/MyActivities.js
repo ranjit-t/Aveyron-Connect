@@ -1,22 +1,55 @@
 import React from "react";
-import { activities } from "../Data/activities";
+// import { activities } from "../Data/activities";
 import "./MyActivities.css";
 import { useNavigate } from "react-router-dom";
+import useActivities from "../Data/AllActivities";
+import { signedUser, db } from "../Firebase/config";
+import {
+  arrayRemove,
+  deleteDoc,
+  doc,
+  getDoc,
+  updateDoc,
+} from "firebase/firestore";
 
-export default function MyActivities({ currentUserEmail }) {
+export default function MyActivities() {
   const navigate = useNavigate();
+
+  const allActivities = useActivities();
 
   const now = new Date().getTime(); // get the current time
 
-  const pastActivities = activities.filter(
+  const pastActivities = allActivities.filter(
     (act) =>
-      act.email === currentUserEmail && new Date(act.date).getTime() < now
+      act.email === signedUser.email && new Date(act.date).getTime() < now
   );
-  const upcomingActivities = activities.filter(
+  const upcomingActivities = allActivities.filter(
     (act) =>
-      act.email === currentUserEmail && new Date(act.date).getTime() >= now
+      act.email === signedUser.email && new Date(act.date).getTime() >= now
   );
 
+  const handleDelete = async (signedUserUID, actID) => {
+    const activityId = signedUserUID + actID;
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this activity?"
+    );
+    if (confirmed) {
+      // // Delete the activity from the Firestore database
+      const ref = doc(db, "activities", activityId);
+      await deleteDoc(ref);
+      // Remove actID from the organized array in the users collection
+
+      const userDocRef = doc(db, "users", signedUserUID);
+      const userDoc = await getDoc(userDocRef);
+      if (userDoc.exists()) {
+        await updateDoc(userDocRef, { organized: arrayRemove(actID) });
+      }
+
+      localStorage.removeItem("allActivities");
+      window.location.reload();
+      // navigate("/profile");
+    }
+  };
   return (
     <div className="my-activities-page">
       {upcomingActivities.length > 0 && (
@@ -36,6 +69,12 @@ export default function MyActivities({ currentUserEmail }) {
                   <p>{act.date}</p>
                   <p>{act.city}</p>
                 </div>
+                <p
+                  className="delete-activity"
+                  onClick={() => handleDelete(signedUser.uid, act.id)}
+                >
+                  Delete
+                </p>
               </div>
             );
           })}
@@ -65,7 +104,17 @@ export default function MyActivities({ currentUserEmail }) {
       )}
 
       {upcomingActivities.length === 0 && pastActivities.length === 0 && (
-        <p>You haven't organised anything so far</p>
+        <p>
+          You haven't organised anything so far{" "}
+          <button
+            className="add-btn"
+            onClick={() => {
+              navigate("/create-activity");
+            }}
+          >
+            Add Activity
+          </button>
+        </p>
       )}
     </div>
   );
