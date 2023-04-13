@@ -204,7 +204,7 @@ function App() {
           />
           <Route path="/profile" element={<Profile></Profile>} />
           <Route
-            path="/user-profile/:id"
+            path="/user-profile/:uid"
             element={<UserProfile></UserProfile>}
           />
           <Route path="/add-event" element={<AddEvent></AddEvent>} />

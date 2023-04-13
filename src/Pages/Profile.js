@@ -75,7 +75,7 @@ export default function Profile() {
             />
             <div className="user-profile-verified">
               <h2>{user ? user.displayName : "User"}</h2>
-              <img src={verified} alt="verified" />
+              {user.verified && <img src={verified} alt="verified" />}
             </div>
 
             <p className="karma-score">

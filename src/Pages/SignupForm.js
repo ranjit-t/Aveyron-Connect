@@ -95,6 +95,7 @@ const SignupForm = () => {
         profilePhoto: photoURL,
         organized: [],
         participated: [],
+        verified: false,
       };
       const userDocRef = doc(collection(db, "users"), userUID);
       await setDoc(userDocRef, userData);

@@ -3,6 +3,9 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import useActivities from "../Data/AllActivities";
 import { signedUser } from "../Firebase/config";
+import bell from "../Images/notification-png.png";
+
+import "./Participations.css";
 
 export default function Participations() {
   const allActivities = useActivities();
@@ -38,11 +41,15 @@ export default function Participations() {
                     navigate(`/activity/${act.id}`);
                   }}
                 >
-                  <p>
+                  <p className="participation-act-name">
                     <b>{act.name}</b>
                   </p>
                   <p>{act.date}</p>
                   <p>{act.city}</p>
+                  <p className="notifications-partificapation">
+                    <img src={bell} alt="Comments" width="50px" />
+                    <span>{act.comments.length}</span>
+                  </p>
                 </div>
               </div>
             );

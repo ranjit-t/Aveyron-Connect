@@ -19,6 +19,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .my-activities-map div {
@@ -45,4 +46,16 @@
   padding: 10px;
   max-height: 20px;
   cursor: pointer;
+}
+.notifications {
+  display: flex;
+  position: absolute;
+  right: 10px;
+  font-size: 20px;
+}
+@media (max-width: 800px) {
+  .my-activities-map {
+    max-width: 70%;
+    line-height: 1.3;
+  }
 }

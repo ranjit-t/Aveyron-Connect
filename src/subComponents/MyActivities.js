@@ -4,6 +4,8 @@ import "./MyActivities.css";
 import { useNavigate } from "react-router-dom";
 import useActivities from "../Data/AllActivities";
 import { signedUser, db } from "../Firebase/config";
+import bell from "../Images/notification-png.png";
+
 import {
   arrayRemove,
   deleteDoc,
@@ -74,6 +76,10 @@ export default function MyActivities() {
                   onClick={() => handleDelete(signedUser.uid, act.id)}
                 >
                   Delete
+                </p>
+                <p className="notifications">
+                  <img src={bell} alt="Comments" width="50px" />
+                  <span>{act.comments.length}</span>
                 </p>
               </div>
             );

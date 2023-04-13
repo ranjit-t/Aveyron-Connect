@@ -1,0 +1,9 @@
+.notifications-partificapation {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  display: flex;
+}
+
+.participation-act-name {
+}

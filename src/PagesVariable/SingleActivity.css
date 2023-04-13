@@ -1,5 +1,15 @@
 .single-activity-page {
   margin-top: 45px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.activity-description,
+.activity-participants {
+  max-width: 70%;
 }
 .comment-section {
   width: 60%;
@@ -71,5 +81,9 @@
 @media (max-width: 800px) {
   .comment-section {
     width: 90%;
+  }
+  .activity-description,
+  .activity-participants {
+    max-width: 90%;
   }
 }
