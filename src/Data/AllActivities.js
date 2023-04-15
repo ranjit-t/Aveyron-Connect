@@ -22,7 +22,7 @@ const useActivities = () => {
     fetchActivities();
   }, []);
 
-  localStorage.setItem("allActivities", JSON.stringify(allActivities));
+  // localStorage.setItem("allActivities", JSON.stringify(allActivities));
 
   return allActivities;
 };
