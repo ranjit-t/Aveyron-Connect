@@ -153,7 +153,9 @@ export default function Profile() {
               {profileMenu === "attending" && <Participations></Participations>}
             </div>
             <div>
-              {profileMenu === "settings" && <UserSettings></UserSettings>}
+              {profileMenu === "settings" && (
+                <UserSettings currUser={user}></UserSettings>
+              )}
             </div>
           </div>
         </div>

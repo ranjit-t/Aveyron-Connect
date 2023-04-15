@@ -126,7 +126,9 @@ export default function ActivitiesSearch() {
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.2 }}
             >
-              <p>Nothing Found</p>
+              <div className="not-loggedin">
+                <p>Nothing Found</p>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>

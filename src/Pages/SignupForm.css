@@ -1,5 +1,6 @@
 .form-page {
   margin-top: 50px;
+  min-height: calc(100vh - 420px);
 }
 .signup-form {
   background-color: #f2f2f2;

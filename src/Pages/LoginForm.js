@@ -60,6 +60,14 @@ const LoginForm = () => {
         </button>
       </form>
       {errorMessage && <div className="form-error">{errorMessage}</div>}
+      <div
+        style={{ cursor: "pointer", marginTop: "40px" }}
+        onClick={() => {
+          navigate("/signup");
+        }}
+      >
+        Don't Have an Account ? <p>Signup</p>
+      </div>
     </div>
   );
 };

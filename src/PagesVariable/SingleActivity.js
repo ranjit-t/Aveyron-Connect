@@ -10,7 +10,7 @@ export default function SingleActivity() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    // console.log(signedUser);
+    console.log(signedUser);
   }, []);
 
   const [newComment, setNewComment] = useState("");
@@ -54,7 +54,18 @@ export default function SingleActivity() {
   };
 
   if (!signedUser) {
-    return <p style={{ marginTop: "45px" }}>Goto Activity Search</p>;
+    return (
+      <div className="not-loggedin">
+        <p>Please Sign in to Access this Page</p>
+        <button
+          onClick={() => {
+            navigate("/login");
+          }}
+        >
+          Login
+        </button>
+      </div>
+    );
   }
 
   return (
