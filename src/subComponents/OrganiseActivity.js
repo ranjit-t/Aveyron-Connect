@@ -25,16 +25,16 @@ export default function OrganiseActivity() {
 
         <div className="add-activity-container">
           <p>
-            <b>How are you doing, Today ?</b>{" "}
+            <b>Comment allez-vous aujourd'hui ?</b>{" "}
           </p>
           <p>
-            In a mood to Organise an activity in your area and connect people
-            around you ? then why late ? Go and add your activity on
-            Aveyron-Connect.
+            Envie d'organiser une activité dans votre région et de vous
+            connecter avec les gens autour de vous ? alors pourquoi tard? Allez
+            ajouter votre activité sur Aveyron-Connect.
           </p>
           <div>
             <button className="add-btn" onClick={handleOrganizeActivity}>
-              Add Activity
+              Créer des sorties
             </button>
           </div>
         </div>

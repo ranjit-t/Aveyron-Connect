@@ -73,19 +73,19 @@ export default function UserProfile() {
         {count}
       </p>
       <p>
-        <b>Age:</b>
+        <b>Âge:</b>
         {currUser ? calculateAge(currUser.dob.seconds) : "19"}
       </p>
       <p>
-        <b>City:</b>
+        <b>Ville:</b>
         {currUser ? currUser.city : "Rodez"}
       </p>
       <p>
-        <b>Activities Organized:</b>
+        <b>Activités Organisées:</b>
         {currUser ? currUser.organized.length : "0"}
       </p>
       <p>
-        <b>Activities Attented:</b>
+        <b>Activités Participé:</b>
         {currUser ? currUser.participated.length : "0"}
       </p>
     </div>

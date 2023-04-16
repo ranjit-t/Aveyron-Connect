@@ -12,21 +12,31 @@ export default function Footer() {
       <br></br>
       <div className="footer-links">
         <ul>
-          <li>Page d'accueil</li>
-          <li>S'inscrire</li>
+          <li>
+            <a href="/">Page d'accueil</a>
+          </li>
+          <li>
+            <a href="/signup">S'inscrire</a>
+          </li>
         </ul>
         <ul>
-          <li>Mon profil</li>
-          <li>Connexion</li>
+          <li>
+            <a href="/profile">Mon profil</a>
+          </li>
+          <li>
+            <a href="/login">Connexion</a>
+          </li>
         </ul>
         <ul>
-          {/* <li>Add Activities</li>
-          <li>Add Business Stores</li>
-          <li>Add Events</li> */}
-          <li>Rechercher des Sorties</li>
-          <li>Créer des sorties</li>
+          <li>
+            <a href="/activity-search">Rechercher des Sorties</a>
+          </li>
+          <li>
+            <a href="/create-activity">Créer des sorties</a>
+          </li>
         </ul>
       </div>
+
       <div>
         <br></br>
         <div>

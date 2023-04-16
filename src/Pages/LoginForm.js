@@ -17,7 +17,7 @@ const LoginForm = () => {
       // setErrorMessage("logged in");
       navigate("/activity-search");
     } catch (error) {
-      setErrorMessage(error.message);
+      setErrorMessage("Oups, il y a une erreur");
     }
   };
 
@@ -35,6 +35,7 @@ const LoginForm = () => {
             name="email"
             onChange={(event) => setEmail(event.target.value)}
             value={email}
+            placeholder="Email"
             className="form-input"
             required
           />
@@ -42,7 +43,7 @@ const LoginForm = () => {
 
         <div className="form-field">
           <label htmlFor="password" className="form-label">
-            Password
+            Mot de passe
           </label>
           <input
             type="password"
@@ -50,13 +51,14 @@ const LoginForm = () => {
             name="password"
             onChange={(event) => setPassword(event.target.value)}
             value={password}
+            placeholder="Mot de passe"
             className="form-input"
             required
           />
         </div>
 
         <button type="submit" className="form-submit-btn">
-          Log in
+          Connexion
         </button>
       </form>
       {errorMessage && <div className="form-error">{errorMessage}</div>}
@@ -66,7 +68,7 @@ const LoginForm = () => {
           navigate("/signup");
         }}
       >
-        Don't Have an Account ? <p>Signup</p>
+        Vous n'avez pas de compte ? <p>S'inscrire</p>
       </div>
     </div>
   );

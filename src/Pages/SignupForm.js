@@ -27,16 +27,18 @@ const SignupForm = () => {
     event.preventDefault();
 
     if (displayName.length < 5) {
-      setErrorMessage("Display name must be at least 5 characters.");
+      setErrorMessage(
+        "Le nom d'affichage doit comporter au moins 5 caractères."
+      );
       return;
     }
 
     if (password !== confirmPassword) {
-      setErrorMessage("Passwords do not match.");
+      setErrorMessage("Les mots de passe ne correspondent pas.");
       return;
     }
 
-    setErrorMessage("Submitting...");
+    setErrorMessage("Soumission...");
 
     try {
       let photoURL;
@@ -100,19 +102,19 @@ const SignupForm = () => {
       const userDocRef = doc(collection(db, "users"), userUID);
       await setDoc(userDocRef, userData);
 
-      setErrorMessage("Registered successfully");
+      setErrorMessage("Enregistré avec succès");
 
       navigate("/activity-search");
     } catch (error) {
-      setErrorMessage("Error registering user. Please try again later.");
+      setErrorMessage("Erreur d'enregistrement. Veuillez réessayer plus tard.");
       console.log(error);
     }
   };
 
   const errorClass = errorMessage
-    ? errorMessage.includes("Submitting...")
+    ? errorMessage.includes("Soumission...")
       ? "form-submitting"
-      : errorMessage.includes("Registered successfully")
+      : errorMessage.includes("Enregistré avec succès")
       ? "form-success"
       : "form-error"
     : "";
@@ -123,7 +125,7 @@ const SignupForm = () => {
       <form onSubmit={handleSubmit} className="signup-form">
         <div className="form-field">
           <label htmlFor="displayName" className="form-label">
-            Display Name
+            Nom d'affichage
           </label>
           <input
             type="text"
@@ -131,6 +133,7 @@ const SignupForm = () => {
             name="displayName"
             className="form-input"
             value={displayName}
+            placeholder="Nom d'affichage"
             onChange={(event) => setDisplayName(event.target.value)}
             required
           />
@@ -146,13 +149,14 @@ const SignupForm = () => {
             name="email"
             className="form-input"
             value={email}
+            placeholder="Email"
             onChange={(event) => setEmail(event.target.value)}
             required
           />
         </div>
         <div className="form-field">
           <label htmlFor="password" className="form-label">
-            Password
+            Mot de passe
           </label>
           <input
             type="password"
@@ -160,13 +164,14 @@ const SignupForm = () => {
             name="password"
             className="form-input"
             value={password}
+            placeholder="Mot de passe"
             onChange={(event) => setPassword(event.target.value)}
             required
           />
         </div>
         <div className="form-field">
           <label htmlFor="confirmPassword" className="form-label">
-            Confirm Password
+            Confirmez le mot de passe
           </label>
           <input
             type="password"
@@ -174,6 +179,7 @@ const SignupForm = () => {
             name="confirmPassword"
             className="form-input"
             value={confirmPassword}
+            placeholder="Confirmez le mot de passe"
             onChange={(event) => setConfirmPassword(event.target.value)}
             required
           />
@@ -194,7 +200,7 @@ const SignupForm = () => {
         </div> */}
         <div className="form-field">
           <label htmlFor="dob" className="form-label">
-            Date of Birth
+            Date de naissance
           </label>
           <DatePicker
             id="dob"
@@ -211,7 +217,7 @@ const SignupForm = () => {
         </div>
         <div className="form-field">
           <label htmlFor="city" className="form-label">
-            City
+            Ville
           </label>
           <input
             type="text"
@@ -219,13 +225,14 @@ const SignupForm = () => {
             name="city"
             className="form-input"
             value={city}
+            placeholder="Ville"
             onChange={(event) => setCity(event.target.value)}
             required
           />
         </div>
         <div className="form-field">
           <label htmlFor="profilePhoto" className="form-label">
-            Profile Photo
+            Photo de Profil
           </label>
           <input
             type="file"

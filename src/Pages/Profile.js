@@ -83,7 +83,7 @@ export default function Profile() {
               {count}
             </p>
             <p>
-              <b>Age:</b>
+              <b>Âge:</b>
               {user ? calculateAge(user.dob.seconds) : "20"}
             </p>
             <p>
@@ -138,7 +138,7 @@ export default function Profile() {
                 }}
               >
                 <img src={settings} alt="Settings" className="settings-icon" />
-                <p className="mobile-remove">Parametres</p>
+                <p className="mobile-remove">Paramètres</p>
               </div>
             </div>
             <div>
@@ -160,7 +160,9 @@ export default function Profile() {
           </div>
         </div>
       ) : (
-        <div style={{ marginTop: "50px" }}>Loading... </div>
+        <div className="not-loggedin">
+          <p>...Chargement</p>
+        </div>
       )}
     </div>
   );

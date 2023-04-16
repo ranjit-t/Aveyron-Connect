@@ -32,7 +32,7 @@ export default function Participations() {
     <div className="my-activities-page">
       {upcomingActivities.length > 0 && (
         <div className="my-activities-list">
-          <h3>Upcoming Activities</h3>
+          <h3>Activités à venir</h3>
           {upcomingActivities.map((act, indx) => {
             return (
               <div key={indx} className="my-activities-map">
@@ -59,7 +59,7 @@ export default function Participations() {
 
       {pastActivities.length > 0 && (
         <div className="my-activities-list">
-          <h3>Past Activities</h3>
+          <h3>Activités passées</h3>
           {pastActivities.map((act, indx) => {
             return (
               <div
@@ -80,7 +80,7 @@ export default function Participations() {
       )}
 
       {upcomingActivities.length === 0 && pastActivities.length === 0 && (
-        <p>You haven't participated in anything so far</p>
+        <p>Vous n'avez participé à rien jusqu'à présent</p>
       )}
     </div>
   );

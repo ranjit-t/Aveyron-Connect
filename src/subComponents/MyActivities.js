@@ -56,7 +56,7 @@ export default function MyActivities() {
     <div className="my-activities-page">
       {upcomingActivities.length > 0 && (
         <div className="my-activities-list">
-          <h3>Upcoming Activities</h3>
+          <h3>Activités à venir</h3>
           {upcomingActivities.map((act, indx) => {
             return (
               <div key={indx} className="my-activities-map">
@@ -75,7 +75,7 @@ export default function MyActivities() {
                   className="delete-activity"
                   onClick={() => handleDelete(signedUser.uid, act.id)}
                 >
-                  Delete
+                  Annuler
                 </p>
                 <p className="notifications">
                   <img src={bell} alt="Comments" width="50px" />
@@ -89,7 +89,7 @@ export default function MyActivities() {
 
       {pastActivities.length > 0 && (
         <div className="my-activities-list">
-          <h3>Past Activities</h3>
+          <h3>Activités passées</h3>
           {pastActivities.map((act, indx) => {
             return (
               <div
@@ -111,14 +111,14 @@ export default function MyActivities() {
 
       {upcomingActivities.length === 0 && pastActivities.length === 0 && (
         <p>
-          You haven't organised anything so far{" "}
+          Vous n'avez rien organisé jusqu'à présent{" "}
           <button
             className="add-btn"
             onClick={() => {
               navigate("/create-activity");
             }}
           >
-            Add Activity
+            Créer des sorties
           </button>
         </p>
       )}

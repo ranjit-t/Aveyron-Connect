@@ -39,3 +39,7 @@ ul {
     flex-direction: column;
   }
 }
+ul a {
+  color: inherit;
+  text-decoration: none;
+}

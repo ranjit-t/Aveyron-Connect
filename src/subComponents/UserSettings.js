@@ -130,29 +130,29 @@ export default function UserSettings({ currUser }) {
         <input type="email" disabled value={currUser.email} />
       </div>
       <div className="profile-setting">
-        <label htmlFor="name">Name:</label>
+        <label htmlFor="name">Nom d'affichage:</label>
         <input
           type="text"
           id="name"
           value={name}
           onChange={handleNameChange}
-          placeholder="Enter your name"
+          placeholder="Nom d'affichage"
         />
       </div>
 
       <div className="profile-setting">
-        <label htmlFor="city">City:</label>
+        <label htmlFor="city">Ville:</label>
         <input
           type="text"
           id="city"
           value={city}
           onChange={handleCityChange}
-          placeholder="Enter your city"
+          placeholder="Ville"
         />
       </div>
 
       <div className="profile-setting">
-        <label htmlFor="dob">Date of Birth</label>
+        <label htmlFor="dob">Date de naissance</label>
         <DatePicker
           id="dob"
           name="dob"
@@ -166,7 +166,7 @@ export default function UserSettings({ currUser }) {
         />
       </div>
       <div className="profile-setting">
-        <label htmlFor="profile-photo">Profile Photo:</label>
+        <label htmlFor="profile-photo">Photo de Profil:</label>
         <input
           type="file"
           id="profile-photo"
@@ -178,7 +178,7 @@ export default function UserSettings({ currUser }) {
         onClick={handleSaveChanges}
         style={{ marginBottom: "50px" }}
       >
-        Save Changes
+        Modifier
       </button>
       {message && <p style={{ marginTop: "-35px" }}>{message}</p>}
     </div>

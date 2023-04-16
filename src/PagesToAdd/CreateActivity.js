@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./CreateActivity.css";
-import { signedUser, db } from "../Firebase/config";
+import { signedUser, db, auth } from "../Firebase/config";
 import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 
@@ -64,102 +64,111 @@ const CreateActivity = () => {
 
   return (
     <div className="CreateActivity-Page">
-      <h3>Create Activity</h3>
-      {/* render error message if it exists */}
-      <form onSubmit={handleSubmit}>
-        <div className="form-field">
-          <label htmlFor="activityName" className="form-label">
-            Activity Name
-          </label>
-          <input
-            type="text"
-            id="activityName"
-            name="activityName"
-            className="form-input"
-            value={activityName}
-            onChange={(event) => setActivityName(event.target.value)}
-            required
-          />
-        </div>
+      <h3>Créer une activité</h3>
+      {auth.currentUser ? (
+        <form onSubmit={handleSubmit}>
+          <div className="form-field">
+            <label htmlFor="activityName" className="form-label">
+              Nom de l'activité
+            </label>
+            <input
+              type="text"
+              id="activityName"
+              name="activityName"
+              className="form-input"
+              value={activityName}
+              placeholder="Nom de l'activité"
+              onChange={(event) => setActivityName(event.target.value)}
+              required
+            />
+          </div>
 
-        <div className="form-field">
-          <label htmlFor="description" className="form-label">
-            Description
-          </label>
-          <textarea
-            id="description"
-            name="description"
-            className="form-input"
-            value={description}
-            onChange={(event) => setDescription(event.target.value)}
-            required
-          />
-        </div>
+          <div className="form-field">
+            <label htmlFor="description" className="form-label">
+              Description
+            </label>
+            <textarea
+              id="description"
+              name="description"
+              className="form-input"
+              value={description}
+              placeholder="Décrivez votre activité"
+              onChange={(event) => setDescription(event.target.value)}
+              required
+            />
+          </div>
 
-        <div className="form-field">
-          <label htmlFor="date" className="form-label">
-            Date
-          </label>
-          <input
-            type="date"
-            id="date"
-            name="date"
-            className="form-input"
-            value={date}
-            onChange={(event) => setDate(event.target.value)}
-            required
-          />
-        </div>
+          <div className="form-field">
+            <label htmlFor="date" className="form-label">
+              Date
+            </label>
+            <input
+              type="date"
+              id="date"
+              name="date"
+              className="form-input"
+              value={date}
+              onChange={(event) => setDate(event.target.value)}
+              required
+            />
+          </div>
 
-        <div className="form-field">
-          <label htmlFor="time" className="form-label">
-            Time
-          </label>
-          <input
-            type="time"
-            id="time"
-            name="time"
-            className="form-input"
-            value={time}
-            onChange={(event) => setTime(event.target.value)}
-            required
-          />
-        </div>
+          <div className="form-field">
+            <label htmlFor="time" className="form-label">
+              Heure de départ
+            </label>
+            <input
+              type="time"
+              id="time"
+              name="time"
+              className="form-input"
+              value={time}
+              onChange={(event) => setTime(event.target.value)}
+              required
+            />
+          </div>
 
-        <div className="form-field">
-          <label htmlFor="address" className="form-label">
-            Address
-          </label>
-          <input
-            type="text"
-            id="address"
-            name="address"
-            className="form-input"
-            value={address}
-            onChange={(event) => setAddress(event.target.value)}
-            required
-          />
-        </div>
+          <div className="form-field">
+            <label htmlFor="address" className="form-label">
+              Adresse
+            </label>
+            <input
+              type="text"
+              id="address"
+              name="address"
+              className="form-input"
+              value={address}
+              placeholder="Adresse"
+              onChange={(event) => setAddress(event.target.value)}
+              required
+            />
+          </div>
 
-        <div className="form-field">
-          <label htmlFor="city" className="form-label">
-            City
-          </label>
-          <input
-            type="text"
-            id="city"
-            name="city"
-            className="form-input"
-            value={city}
-            onChange={(event) => setCity(event.target.value)}
-            required
-          />
-        </div>
+          <div className="form-field">
+            <label htmlFor="city" className="form-label">
+              Ville
+            </label>
+            <input
+              type="text"
+              id="city"
+              name="city"
+              className="form-input"
+              value={city}
+              placeholder="Ville"
+              onChange={(event) => setCity(event.target.value)}
+              required
+            />
+          </div>
 
-        <button type="submit" className="btn btn-primary">
-          Create
-        </button>
-      </form>
+          <button type="submit" className="btn btn-primary">
+            Créer
+          </button>
+        </form>
+      ) : (
+        <div className="not-loggedin">
+          <p>Veuillez vous connecter pour accéder à cette page</p>
+        </div>
+      )}
       {errorMessage && <p className="error-message">{errorMessage}</p>}{" "}
     </div>
   );

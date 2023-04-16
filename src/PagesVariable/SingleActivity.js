@@ -77,20 +77,20 @@ export default function SingleActivity() {
   if (loading) {
     return (
       <div className="not-loggedin">
-        <p>...Loading</p>
+        <p>...Chargement</p>
       </div>
     );
   }
   if (!signedUser) {
     return (
       <div className="not-loggedin">
-        <p>Please Sign in to Access this Page</p>
+        <p>Veuillez vous connecter pour accéder à cette page</p>
         <button
           onClick={() => {
             navigate("/login");
           }}
         >
-          Login
+          Connexion
         </button>
       </div>
     );
@@ -111,11 +111,11 @@ export default function SingleActivity() {
             {act.timing}
           </p>
           <p>
-            <b>Address: </b>
+            <b>Adresse: </b>
             {act.address} , {act.city}
           </p>
           <p>
-            <b>Organized by: </b>
+            <b>Organisé par: </b>
             <span
               style={{
                 cursor: "pointer",
@@ -130,7 +130,7 @@ export default function SingleActivity() {
             </span>
           </p>
           <p className="activity-participants">
-            <b>Participants: </b>
+            <b>Qui arrive: </b>
             {act.participants &&
               act.participants.map((part, idx) => {
                 const isLast = idx === act.participants.length - 1;
@@ -158,9 +158,9 @@ export default function SingleActivity() {
               (participant) => participant.email === signedUser.email
             ) ? (
               <div>
-                <p>Awesome, You are attending this event!</p>
+                <p>Génial, vous participez à cet événement !</p>
                 <p style={{ fontSize: "12px" }}>
-                  if you changed your mind, you can cancel it
+                  si vous changez d'avis, vous pouvez l'annuler
                 </p>
 
                 <button
@@ -194,7 +194,7 @@ export default function SingleActivity() {
                     }
                   }}
                 >
-                  Remove Attending
+                  Annuler
                 </button>
               </div>
             ) : (
@@ -244,7 +244,7 @@ export default function SingleActivity() {
                   // localStorage.removeItem("allActivities");
                 }}
               >
-                Attend
+                Participer
               </button>
             )}
           </div>
@@ -253,11 +253,11 @@ export default function SingleActivity() {
             <div className="comment-input">
               <input
                 type="text"
-                placeholder="Avez-vous des questions?"
+                placeholder="Avez-vous des questions ou autre chose?"
                 onChange={(e) => setNewComment(e.target.value)}
                 value={newComment}
               />
-              <button onClick={handleComment}>Comment</button>
+              <button onClick={handleComment}>Ajouter</button>
             </div>
             {act.comments.length > 0 ? (
               act.comments
@@ -290,7 +290,7 @@ export default function SingleActivity() {
         </div>
       ) : (
         <div className="not-loggedin">
-          <p>Your Internet is taking too long to Load</p>
+          <p>Votre Internet prend trop de temps à charger</p>
         </div>
       )}
     </div>

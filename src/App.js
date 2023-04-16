@@ -52,7 +52,7 @@ function App() {
 
           <div className="nav-bar-in-header">
             <NavLink className="nav-link" to="/">
-              HomePage
+              Accueil
             </NavLink>
             {!auth.currentUser && (
               <NavLink className="nav-link" to="/login">
@@ -77,7 +77,7 @@ function App() {
             </NavLink>
             {signedUser && (
               <NavLink className="nav-link" to="/logout">
-                Logout
+                Se déconnecter
               </NavLink>
             )}
           </div>
@@ -100,7 +100,7 @@ function App() {
                 setOpen((prev) => !prev);
               }}
             >
-              HomePage
+              Accueil
             </NavLink>
 
             {!signedUser && (
@@ -111,7 +111,7 @@ function App() {
                   setOpen((prev) => !prev);
                 }}
               >
-                Login
+                Connexion
               </NavLink>
             )}
             {!signedUser && (
@@ -122,7 +122,7 @@ function App() {
                   setOpen((prev) => !prev);
                 }}
               >
-                Signup
+                S'inscrire
               </NavLink>
             )}
             {signedUser && (
@@ -133,7 +133,7 @@ function App() {
                   setOpen((prev) => !prev);
                 }}
               >
-                My Profile
+                Mon Profil
               </NavLink>
             )}
 
@@ -171,7 +171,7 @@ function App() {
                 setOpen((prev) => !prev);
               }}
             >
-              Create Sorties
+              Créer des Sorties
             </NavLink>
             {signedUser && (
               <NavLink
@@ -181,7 +181,7 @@ function App() {
                   setOpen((prev) => !prev);
                 }}
               >
-                Logout
+                Se déconnecter
               </NavLink>
             )}
           </div>

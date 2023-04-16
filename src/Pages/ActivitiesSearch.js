@@ -32,10 +32,10 @@ export default function ActivitiesSearch() {
       <div className="search-container">
         <div className="input-combined">
           <label>
-            <span>What</span>
+            <span>Quoi</span>
             <input
               type="text"
-              placeholder="Name"
+              placeholder="Nom"
               onChange={(e) => {
                 setSearchName(e.target.value);
               }}
@@ -43,10 +43,10 @@ export default function ActivitiesSearch() {
             />
           </label>
           <label>
-            <span>Where</span>
+            <span>Où</span>
             <input
               type="text"
-              placeholder="City"
+              placeholder="Ville"
               onChange={(e) => {
                 setSearchCity(e.target.value);
               }}
@@ -54,7 +54,7 @@ export default function ActivitiesSearch() {
             />
           </label>
           <label>
-            <span>When</span>
+            <span>Quand</span>
             <input
               className="date-input"
               type="date"
@@ -74,7 +74,7 @@ export default function ActivitiesSearch() {
               setSearchDate("");
             }}
           >
-            Clear
+            Effacer la recherche
           </span>
         </div>
       </div>
@@ -94,15 +94,15 @@ export default function ActivitiesSearch() {
                   <p>
                     <b>{act.name}</b>
                   </p>
-                  <p>{act.description}</p>
+                  <p>{act.description.slice(0, 50) + "....."}</p>
                   <p>
-                    <b>City:</b>
+                    <b>Ville:</b>
                     {act.city}
                   </p>
-                  <p>
-                    <b>Address:</b>
+                  {/* <p>
+                    <b>Adresse:</b>
                     {act.address}
-                  </p>
+                  </p> */}
                   <p>
                     <b>Date:</b>
                     {act.date}
@@ -113,7 +113,7 @@ export default function ActivitiesSearch() {
                       navigate(`/activity/${act.id}`);
                     }}
                   >
-                    More Info
+                    Plus d'options
                   </button>
                 </motion.div>
               );
@@ -127,7 +127,7 @@ export default function ActivitiesSearch() {
               transition={{ duration: 0.2 }}
             >
               <div className="not-loggedin">
-                <p>Nothing Found</p>
+                <p>Désolé, rien trouvé</p>
               </div>
             </motion.div>
           )}
