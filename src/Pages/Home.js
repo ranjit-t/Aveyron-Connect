@@ -16,9 +16,11 @@ export default function Home() {
           <h1>Aveyron-Connect</h1>
           <p>C'est quoi Aveyron-Connect ?</p>
           <p>
-            Aveyron Connect helps you connect with locals!
+            Aveyron-Connect est une plateforme sociale qui vous aide à connecter
+            les Aveyronnais.
             <span style={{ display: "block" }}>
-              Search for Events, Find Local Businesses and Join Communities.
+              Ici, vous pouvez créer des sorties ou participer à des sorties
+              créées par d'autres.
             </span>
           </p>
         </div>

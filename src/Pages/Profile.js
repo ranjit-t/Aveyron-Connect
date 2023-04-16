@@ -87,14 +87,14 @@ export default function Profile() {
               {user ? calculateAge(user.dob.seconds) : "20"}
             </p>
             <p>
-              <b>City:</b>
+              <b>Ville:</b>
               {user ? user.city : "Rodez"}
             </p>
             <p>
-              <b>Activities Organized:</b> {user.organized.length}
+              <b>Activités Organisées:</b> {user.organized.length}
             </p>
             <p>
-              <b>Activities Attented:</b>
+              <b>Activités Participé:</b>
               {user.participated.length}
             </p>
           </div>
@@ -107,7 +107,7 @@ export default function Profile() {
                 }}
               >
                 <img src={addact} alt="Settings" className="settings-icon" />
-                <p className="mobile-remove">Organise</p>
+                <p className="mobile-remove">Organiser</p>
               </div>
               <div
                 className={profileMenu === "myactivities" ? "active" : ""}
@@ -120,7 +120,7 @@ export default function Profile() {
                   alt="Settings"
                   className="settings-icon"
                 />
-                <p className="mobile-remove">My Activities</p>
+                <p className="mobile-remove">Mes Sorties</p>
               </div>
               <div
                 className={profileMenu === "attending" ? "active" : ""}
@@ -129,7 +129,7 @@ export default function Profile() {
                 }}
               >
                 <img src={attend} alt="Settings" className="settings-icon" />
-                <p className="mobile-remove">Participations</p>
+                <p className="mobile-remove">Mes Participations</p>
               </div>
               <div
                 className={profileMenu === "settings" ? "active" : ""}

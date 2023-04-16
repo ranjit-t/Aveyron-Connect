@@ -28,7 +28,7 @@ export default function ActivitiesSearch() {
 
   return (
     <div className="activity-page">
-      <h1>Activities</h1>
+      <h1>Sorties</h1>
       <div className="search-container">
         <div className="input-combined">
           <label>

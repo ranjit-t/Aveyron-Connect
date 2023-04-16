@@ -56,17 +56,17 @@ function App() {
             </NavLink>
             {!auth.currentUser && (
               <NavLink className="nav-link" to="/login">
-                Login
+                Connexion
               </NavLink>
             )}
             {!auth.currentUser && (
               <NavLink className="nav-link" to="/signup">
-                Signup
+                S'inscrire
               </NavLink>
             )}
             {signedUser && (
               <NavLink className="nav-link" to="/profile">
-                My Profile
+                Mon Profil
               </NavLink>
             )}
             {/* <NavLink className="nav-link" to="/create-activity">
