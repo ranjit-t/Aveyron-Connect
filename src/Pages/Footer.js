@@ -7,7 +7,7 @@ export default function Footer() {
     <div className="App-footer">
       <div className="contact">
         <img src={envolope} alt="contact" />
-        Contact Us:<b>&nbsp; hello@aveyron-connect.com</b>
+        Contactez-Nous:<b>&nbsp; hello@aveyron-connect.com</b>
       </div>
       <br></br>
       <div className="footer-links">

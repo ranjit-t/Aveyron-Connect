@@ -2,7 +2,7 @@ import React from "react";
 import "./Home.css";
 
 import marketing from "../Images/marketing.png";
-import euro from "../Images/euro.png";
+// import euro from "../Images/euro.png";
 import eco from "../Images/eco.png";
 import { useNavigate } from "react-router-dom";
 
@@ -47,11 +47,8 @@ export default function Home() {
           </div>
         </div> */}
         <div className="explore-activities">
-          <h2>Activities</h2>
-          <p>
-            Join communities on Aveyron Connect and connect with like-minded
-            individuals who share your passions and interests.
-          </p>
+          <h2>Sorties</h2>
+          <p>Trouvez des sorties dans votre ville et participez-y</p>
           <img
             src="https://images.unsplash.com/photo-1539635278303-d4002c07eae3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
             alt="Communities"
@@ -62,16 +59,13 @@ export default function Home() {
                 navigate("/activity-search");
               }}
             >
-              Find Activities
+              Sorties
             </button>
           </div>
         </div>
         <div className="explore-stores">
-          <h2>Stores</h2>
-          <p>
-            Join communities on Aveyron Connect and connect with like-minded
-            individuals who share your passions and interests.
-          </p>
+          <h2>Magasins</h2>
+          <p>Trouver des magasins d'affaires</p>
           <img
             src="https://images.unsplash.com/photo-1519822472072-ec86d5ab6f5c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
             alt="Communities"
@@ -82,23 +76,24 @@ export default function Home() {
         </div>
       </div>
       <hr style={{ width: "70%", marginTop: "40px" }} />
-      <h2>Organise Events</h2>
+      <h2>Créer des Sorties</h2>
       <div className="home-section3">
         <div className="organize-activity-content">
           <p>
-            Looking for a way to explore the beauty of Aveyron? Look no further
-            than Aveyron-Connect, the ultimate resource for planning your next
-            adventure. With our site, you can discover unique and exciting
-            activities for all ages and skill levels. From hiking and biking to
-            kayaking and rock climbing, Aveyron-Connect has it all.
+            Si vous cherchez un moyen de pimenter votre semaine ou votre
+            week-end. Explorer votre région ou les attractions à proximité peut
+            être une manière amusante et créative. Commencez par réfléchir à
+            quelques idées avec votre groupe. Vous pouvez planifier un
+            pique-nique dans un parc à proximité, faire une randonnée à pied ou
+            à vélo sur un sentier local, visiter un musée ou une galerie d'art,
+            ou essayer un nouveau restaurant ou café.
           </p>
           <p>
-            Whether you're a seasoned outdoor enthusiast or just looking for a
-            fun weekend activity, Aveyron-Connect is the perfect place to start.
-            Our easy-to-use platform allows you to search for activities by
-            location, activity type, and more. You can even book your activity
-            directly through our site, making planning your next adventure a
-            breeze.
+            Vous pouvez même planifier une sortie thématique basée sur un
+            intérêt commun, comme une réunion d'un club de lecture dans une
+            bibliothèque locale ou une soirée cinéma à la maison. Avec un peu de
+            créativité et d'efforts, vous pouvez créer des sorties mémorables
+            que tout le monde appréciera.
           </p>
           <div>
             <button
@@ -107,7 +102,7 @@ export default function Home() {
                 navigate("/profile");
               }}
             >
-              Organise An Activity
+              Créer des Sorties
             </button>
           </div>
         </div>
@@ -147,49 +142,49 @@ export default function Home() {
         </div> */}
         <div className="pro-account-proposal">
           <p>
-            Are you looking for a way to promote your business or events in an
-            eco-friendly way? Aveyron-Connect offers a platform that allows you
-            to reach a wider audience and connect with environmentally conscious
-            individuals who share your values.
+            Vous cherchez un moyen de promouvoir votre entreprise ou vos
+            événements de manière éco-responsable ? Aveyron-Connect propose une
+            plateforme qui vous permet de toucher un public plus large et de
+            vous connecter avec des personnes soucieuses de l'environnement qui
+            partagent vos valeurs.
           </p>
           <ul>
             <li>
               <img src={marketing} alt="Visibility" className="pro-icon" />
-              Increased visibility: reach a wider audience of environmentally
-              conscious individuals who share your values.
+              Visibilité accrue : atteignez un public plus large d'individus
+              soucieux de l'environnement qui partagent vos valeurs.
             </li>
             <li>
               <img src={eco} alt="Eco-friendly" className="pro-icon" />
-              Eco-friendly marketing: use our paperless marketing strategies to
-              reduce your carbon footprint and attract like-minded customers.
+              Marketing respectueux de l'environnement : utilisez nos stratégies
+              de marketing sans papier pour réduire votre empreinte carbone et
+              attirer des clients partageant les mêmes idées.
             </li>
 
-            <li>
+            {/* <li>
               <img src={euro} alt="Euro" className="pro-icon" />
               Only €10 for a lifetime pro account: enjoy all the benefits of a
               pro account without any ongoing subscription costs.
-            </li>
+            </li> */}
           </ul>
           <p>
-            Sign up for a pro account on Aveyron-Connect today and start
-            promoting your business or events to a community of environmentally
-            conscious individuals.
+            Contactez-nous et commencez à promouvoir votre entreprise ou vos
+            événements auprès d'une communauté de personnes soucieuses de
+            l'environnement.
           </p>
           <p>
             <b>
-              Together, we can create a more sustainable future and make a
-              positive impact on the environment.
+              Ensemble, nous pouvons créer un avenir plus durable et faire un
+              impact positif sur l'environnement.
             </b>
           </p>
 
           <div>
-            <button
-              className="add-btn"
-              // onClick={handleOrganizeActivity}
-              style={{ marginBottom: "50px" }}
-            >
-              Contact Us
-            </button>
+            <a href="mailto:hello@aveyron-connect.com">
+              <button className="add-btn" style={{ marginBottom: "50px" }}>
+                Contactez-Nous
+              </button>
+            </a>
           </div>
         </div>
       </div>
