@@ -117,11 +117,19 @@ export default function SingleActivity() {
             className="event-gallery"
           >
             <div>
-              <img
-                src="https://images.unsplash.com/photo-1614713568397-b31b779d0498?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1725&q=80"
-                alt={act.name}
-                className="slider-image"
-              />
+              {act.photoURL ? (
+                <img
+                  src={act.photoURL}
+                  alt={act.name}
+                  className="slider-image"
+                />
+              ) : (
+                <img
+                  src="https://images.unsplash.com/photo-1614713568397-b31b779d0498?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1725&q=80"
+                  alt={act.name}
+                  className="slider-image"
+                />
+              )}
             </div>
           </Carousel>
           <h2>{act.name}</h2>
@@ -131,7 +139,7 @@ export default function SingleActivity() {
             {act.date}
           </p>
           <p>
-            <b>Timings: </b>
+            <b>Heure de départ: </b>
             {act.timing}
           </p>
           <p>
@@ -310,7 +318,9 @@ export default function SingleActivity() {
                 })
             ) : (
               <div className="each-comment" key={Math.random()}>
-                <p style={{ paddingBottom: "10px" }}>No comments</p>
+                <p style={{ paddingBottom: "10px" }}>
+                  aucun commentaire pour l'instant
+                </p>
               </div>
             )}
           </div>

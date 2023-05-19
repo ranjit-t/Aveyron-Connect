@@ -97,10 +97,14 @@ export default function ActivitiesSearch() {
                   transition={{ duration: 0.2 }}
                 >
                   <div className="store-image">
-                    <img
-                      src="https://images.unsplash.com/photo-1614713568397-b31b779d0498?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1725&q=80"
-                      alt={act.name}
-                    />
+                    {act.photoURL ? (
+                      <img src={act.photoURL} alt={act.name} />
+                    ) : (
+                      <img
+                        src="https://images.unsplash.com/photo-1614713568397-b31b779d0498?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1725&q=80"
+                        alt={act.name}
+                      />
+                    )}
                   </div>
                   <div className="event-details">
                     <p>

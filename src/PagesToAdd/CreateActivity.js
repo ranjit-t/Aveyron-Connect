@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import "./CreateActivity.css";
-import { signedUser, db, auth } from "../Firebase/config";
+import { signedUser, auth, db, storage } from "../Firebase/config";
 import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 const CreateActivity = () => {
   const [activityName, setActivityName] = useState("");
@@ -12,28 +14,64 @@ const CreateActivity = () => {
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const [errorMessage, setErrorMessage] = useState(""); // new state variable
+  const [photo1, setPhoto1] = useState(null);
 
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const id = Math.floor(Math.random() * 10000);
-    const newActivity = {
-      id: id,
-      name: activityName,
-      organizer: signedUser.displayName,
-      email: signedUser.email,
-      uid: signedUser.uid,
-      description,
-      date,
-      timing: time,
-      city,
-      address,
-      participants: [],
-      comments: [],
-    };
-    console.log(newActivity);
+
     try {
+      const id =
+        Math.floor(Math.random() * 10000) +
+        new Date().toLocaleDateString() +
+        "-" +
+        new Date().toLocaleTimeString();
+
+      let photoURL;
+
+      const imageRef = ref(storage, `activities/${id}.jpg`);
+
+      const uploadTask = uploadBytesResumable(imageRef, photo1);
+
+      // Wait for the upload task to complete before updating the profile photo URL
+      await new Promise((resolve, reject) => {
+        uploadTask.on(
+          "state_changed",
+          (snapshot) => {},
+          (error) => {
+            reject(error);
+          },
+          () => {
+            getDownloadURL(uploadTask.snapshot.ref)
+              .then((downloadURL) => {
+                // setProfilePhotoURL(downloadURL);
+                photoURL = downloadURL;
+                resolve();
+              })
+              .catch((error) => {
+                reject(error);
+              });
+          }
+        );
+      });
+
+      const newActivity = {
+        id: id,
+        name: activityName,
+        organizer: signedUser.displayName,
+        email: signedUser.email,
+        uid: signedUser.uid,
+        description,
+        date,
+        timing: time,
+        city,
+        address,
+        photoURL: photoURL,
+        participants: [],
+        comments: [],
+      };
+      console.log(newActivity);
       const docRef = doc(db, "activities", signedUser.uid + id);
       await setDoc(docRef, newActivity);
       console.log("Activity added successfully!");
@@ -51,14 +89,16 @@ const CreateActivity = () => {
 
         // Remove allActivities from localStorage
         localStorage.removeItem("allActivities");
-        setErrorMessage("Activity added successfully!"); // clear any previous error message
+        setErrorMessage("Activité ajoutée avec succès !"); // clear any previous error message
         setTimeout(() => {
           navigate(`/profile`);
         }, 2500);
       }
     } catch (error) {
       console.error(error);
-      setErrorMessage("Failed to create activity. Please try again."); // set error message
+      setErrorMessage(
+        "Échec de la création de l'activité. Veuillez réessayer."
+      ); // set error message
     }
   };
 
@@ -156,6 +196,17 @@ const CreateActivity = () => {
               value={city}
               placeholder="Ville"
               onChange={(event) => setCity(event.target.value)}
+              required
+            />
+            <label htmlFor="city" className="form-label">
+              Photo
+            </label>
+            <input
+              type="file"
+              className="form-input"
+              id="photo1"
+              //   value={photo1}
+              onChange={(e) => setPhoto1(e.target.files[0])}
               required
             />
           </div>
