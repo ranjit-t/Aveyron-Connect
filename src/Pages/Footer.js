@@ -1,6 +1,8 @@
 import React from "react";
 import "./Footer.css";
 import envolope from "../Images/envolope.png";
+import googleplay from "../Images/Appgoogleplay.png";
+import applestore from "../Images/AppAppStore.png";
 
 export default function Footer() {
   return (
@@ -36,9 +38,17 @@ export default function Footer() {
           </li>
         </ul>
       </div>
+      <div className="appstores">
+        <p style={{ fontSize: "20px" }}>
+          {" "}
+          Application mobile bientôt disponible
+        </p>
+        <img src={googleplay} alt="googleplay" />
+        <img src={applestore} alt="applestore" />
+      </div>
 
       <div>
-        <br></br>
+        {/* <br></br> */}
         <div>
           <p>&copy; 2023 Aveyron-ICI. All rights reserved.</p>
         </div>
