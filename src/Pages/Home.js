@@ -29,9 +29,9 @@ export default function Home() {
             </span>
           </p>
           <p style={{ maxWidth: "900px" }}>
-            AVEYRON-ICI propose également de découvrir les meilleurs magasins de
-            qualité qui sont sélectionnés en fonction de leur qualité, de leur
-            réputation et de leur service.
+            Nous propose également de découvrir les meilleurs magasins qui sont
+            sélectionnés en fonction de leur qualité, de leur réputation et de
+            leur service.
           </p>
         </div>
         {/* <img
@@ -141,11 +141,11 @@ export default function Home() {
 
         <div className="pro-account-proposal">
           <p>
-            Vous souhaitez mettre en avant votre entreprise sur ICI L'Aveyron ?
+            Vous souhaitez mettre en avant votre entreprise sur AVEYRON-ICI ?
             Contactez-nous avec votre entreprise et nous l'étudierons.
           </p>
           <p>
-            ICI L'Aveyron propose une plateforme qui vous permet de toucher un
+            AVEYRON-ICI propose une plateforme qui vous permet de toucher un
             public plus large et de vous connecter avec des personnes soucieuses
             de l'environnement qui partagent vos valeurs.
           </p>

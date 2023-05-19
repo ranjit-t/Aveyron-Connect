@@ -19,7 +19,7 @@ export default function OrganiseActivity() {
         <div className="profile-header">
           <h3>
             Hello, <br></br>
-            <span>{current ? current.displayName : " Amélie!"}</span>
+            <span>{current ? current.displayName : ""}</span>
           </h3>
         </div>
 
