@@ -8,7 +8,7 @@ import { NavLink, Route, Routes, BrowserRouter } from "react-router-dom";
 
 import SingleEvent from "./PagesVariable/SingleEvent";
 
-import Logo from "./Images/aveyron-connect.png";
+import Logo from "./Images/ici-laveyron.png";
 
 import { Squash as Hamburger } from "hamburger-react";
 import React, { useState, useEffect } from "react";
@@ -22,6 +22,8 @@ import UserProfile from "./PagesVariable/UserProfile";
 import CreateActivity from "./PagesToAdd/CreateActivity";
 import Logout from "./Pages/Logout";
 import { onAuthStateChanged } from "firebase/auth";
+import Business from "./Pages/Business";
+import SingleBusiness from "./PagesVariable/SingleBusiness";
 
 function App() {
   const [isOpen, setOpen] = useState(false);
@@ -45,7 +47,6 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <header className="homepage-header">
-          {/* <h1>Aveyron Connect</h1> */}
           <a className="logo-section" href="/">
             <img src={Logo} alt="logo" className="logo" />
           </a>
@@ -54,30 +55,32 @@ function App() {
             <NavLink className="nav-link" to="/">
               Accueil
             </NavLink>
+
+            {/* {!auth.currentUser && (
+              <NavLink className="nav-link" to="/signup">
+                S'inscrire
+              </NavLink>
+            )} */}
+
+            <NavLink className="nav-link" to="/activity-search">
+              Nos-Sorties
+            </NavLink>
+            <NavLink className="nav-link" to="/stores">
+              Nos-Adresses
+            </NavLink>
             {!auth.currentUser && (
               <NavLink className="nav-link" to="/login">
                 Connexion
               </NavLink>
             )}
-            {!auth.currentUser && (
-              <NavLink className="nav-link" to="/signup">
-                S'inscrire
-              </NavLink>
-            )}
             {signedUser && (
               <NavLink className="nav-link" to="/profile">
-                Mon Profil
+                Profil
               </NavLink>
             )}
-            {/* <NavLink className="nav-link" to="/create-activity">
-              Create Activity
-            </NavLink> */}
-            <NavLink className="nav-link" to="/activity-search">
-              Sorties
-            </NavLink>
             {signedUser && (
               <NavLink className="nav-link" to="/logout">
-                Se déconnecter
+                Se-déconnecter
               </NavLink>
             )}
           </div>
@@ -133,7 +136,7 @@ function App() {
                   setOpen((prev) => !prev);
                 }}
               >
-                Mon Profil
+                Mon-Profil
               </NavLink>
             )}
 
@@ -162,7 +165,16 @@ function App() {
                 setOpen((prev) => !prev);
               }}
             >
-              Sorties
+              Nos-Sorties
+            </NavLink>
+            <NavLink
+              className="nav-link"
+              to="/stores"
+              onClick={() => {
+                setOpen((prev) => !prev);
+              }}
+            >
+              Nos-Adresses
             </NavLink>
             <NavLink
               className="nav-link"
@@ -181,7 +193,7 @@ function App() {
                   setOpen((prev) => !prev);
                 }}
               >
-                Se déconnecter
+                Se-déconnecter
               </NavLink>
             )}
           </div>
@@ -192,12 +204,18 @@ function App() {
           <Route path="/login" element={<LoginForm></LoginForm>} />
           <Route path="/" element={<Home></Home>} />
           <Route path="/event-search" element={<EventsSearch></EventsSearch>} />
+          <Route path="/stores" element={<Business></Business>} />
           <Route
             path="/activity-search"
             element={<ActivitiesSearch></ActivitiesSearch>}
           />
 
           <Route path="/event/:id" element={<SingleEvent></SingleEvent>} />
+          <Route
+            path="/store/:id"
+            element={<SingleBusiness></SingleBusiness>}
+          />
+
           <Route
             path="/activity/:id"
             element={<SingleActivity></SingleActivity>}

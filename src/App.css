@@ -5,10 +5,11 @@
   line-height: 1.5;
 }
 .logo {
-  height: 60px;
-  padding: 5px 0;
+  height: 70px;
+  padding: 5px 0 0 0;
   cursor: pointer;
   z-index: 10;
+  margin-left: 5px;
 }
 
 /* Header  */
@@ -26,6 +27,9 @@
 
 .menu-container {
   display: none;
+}
+.nav-bar-in-header {
+  margin-right: 25px;
 }
 .nav-bar > * {
   padding: 5px;
@@ -62,7 +66,7 @@
   font-size: 20px;
   text-decoration: none;
   color: white !important;
-  background-color: #008cba;
+  background-color: #226000;
 }
 
 @keyframes open-anime {
@@ -109,7 +113,7 @@
     z-index: 4;
   }
   .logo {
-    height: 50px;
+    height: 80px;
     padding: 10px 0;
   }
 
@@ -119,6 +123,7 @@
   .hamburger-react {
     position: absolute;
     left: 0;
+    top: 14px;
     width: 100%;
     background-color: #fff;
   }

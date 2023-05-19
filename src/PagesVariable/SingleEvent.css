@@ -21,13 +21,20 @@
 }
 
 .event-details {
-  text-align: left;
-  max-width: 50%;
+  text-align: center;
+  max-width: 80%;
   margin-left: auto;
   margin-right: auto;
 }
 .single-event-page {
   margin-top: 10px;
+}
+
+.timing-menu {
+  display: flex;
+  justify-content: center;
+  column-gap: 50px;
+  align-items: center;
 }
 @media (max-width: 700px) {
   .single-event-page {
@@ -40,5 +47,13 @@
     object-fit: cover;
     max-width: 100%;
     height: auto;
+  }
+  .timing-menu {
+    flex-direction: column;
+  }
+}
+@media (max-width: 468px) {
+  .event-details {
+    max-width: 65%;
   }
 }

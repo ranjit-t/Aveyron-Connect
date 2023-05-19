@@ -14,8 +14,6 @@ import { signedUser } from "../Firebase/config";
 import { db } from "../Firebase/config";
 import { doc, getDoc } from "firebase/firestore";
 
-// import useUsers from "../Data/AllUsers";
-
 export default function Profile() {
   const [user, setUser] = useState(null);
 
@@ -49,8 +47,20 @@ export default function Profile() {
     return () => clearInterval(intervalId);
   }, [count, currentScore]);
 
-  const [profileMenu, setprofileMenu] = useState("myactivities");
+  // Initialize profileMenu state from localStorage
+  const [profileMenu, setProfileMenu] = useState(
+    localStorage.getItem("profileMenu") || "myactivities"
+  );
 
+  // Save profileMenu to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem("profileMenu", profileMenu);
+  }, [profileMenu]);
+
+  // Click event handler for the menu items
+  const handleMenuClick = (menu) => {
+    setProfileMenu(menu);
+  };
   //age
   function calculateAge(timestamp) {
     const birthday = new Date(timestamp * 1000);
@@ -63,7 +73,10 @@ export default function Profile() {
     <div>
       {user ? (
         <div className="profile-details">
-          <div className="own-user-profile" style={{ textAlign: "center" }}>
+          <div
+            className="own-user-profile"
+            style={{ textAlign: "center", minHeight: "600px" }}
+          >
             <img
               className="user-profile-photo"
               src={
@@ -103,7 +116,7 @@ export default function Profile() {
               <div
                 className={profileMenu === "organise" ? "active" : ""}
                 onClick={() => {
-                  setprofileMenu("organise");
+                  handleMenuClick("organise");
                 }}
               >
                 <img src={addact} alt="Settings" className="settings-icon" />
@@ -112,7 +125,7 @@ export default function Profile() {
               <div
                 className={profileMenu === "myactivities" ? "active" : ""}
                 onClick={() => {
-                  setprofileMenu("myactivities");
+                  handleMenuClick("myactivities");
                 }}
               >
                 <img
@@ -125,7 +138,7 @@ export default function Profile() {
               <div
                 className={profileMenu === "attending" ? "active" : ""}
                 onClick={() => {
-                  setprofileMenu("attending");
+                  handleMenuClick("attending");
                 }}
               >
                 <img src={attend} alt="Settings" className="settings-icon" />
@@ -134,7 +147,7 @@ export default function Profile() {
               <div
                 className={profileMenu === "settings" ? "active" : ""}
                 onClick={() => {
-                  setprofileMenu("settings");
+                  handleMenuClick("settings");
                 }}
               >
                 <img src={settings} alt="Settings" className="settings-icon" />

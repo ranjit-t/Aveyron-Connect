@@ -1,0 +1,45 @@
+.App-footer {
+  background-color: #2f9659;
+  color: #fff;
+  width: 100%;
+  padding: 25px 0 10px 0;
+  margin-top: 40px;
+}
+.footer-links {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: left;
+}
+ul {
+  list-style: none;
+}
+.App-footer li {
+  cursor: pointer;
+  margin-top: 10px;
+}
+.contact {
+  font-size: 19px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contact img {
+  width: 70px;
+  height: auto;
+}
+@media (max-width: 600px) {
+  .footer-links {
+    /* font-size: 0.5rem; */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .contact {
+    flex-direction: column;
+  }
+}
+ul a {
+  color: inherit;
+  text-decoration: none;
+}

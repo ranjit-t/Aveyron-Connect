@@ -36,14 +36,14 @@
   color: red;
 }
 .form-submitting {
-  color: #008cba;
+  color: #226000;
 }
 .form-success {
   color: rgb(45, 121, 45);
 }
 
 .form-submit-btn {
-  background-color: #008cba;
+  background-color: #226000;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -53,7 +53,7 @@
   width: 100%;
 }
 .form-submit-btn:hover {
-  background-color: #097396;
+  background-color: #2f740a;
 }
 
 @media screen and (max-width: 600px) {

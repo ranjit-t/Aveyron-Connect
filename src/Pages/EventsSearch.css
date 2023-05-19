@@ -6,6 +6,7 @@
   margin-left: auto;
   margin-right: auto;
   position: relative;
+  margin-top: 10px;
 }
 .search-container {
   /* position: sticky;
@@ -25,7 +26,7 @@
 .input-combined {
   margin: 10px;
   width: fit-content;
-  border: 1px solid #008cba;
+  border: 1px solid #226000;
   border-radius: 35px;
   display: flex;
   justify-content: center;
@@ -66,7 +67,7 @@
 }
 
 .input-buttons {
-  border: 1px solid #008cba;
+  border: 1px solid #226000;
   display: grid;
   grid-template-columns: auto auto;
   column-gap: 10px;
@@ -78,17 +79,22 @@
 }
 
 .event-wrapper {
-  max-width: 70%;
+  max-width: 80%;
   margin: 40px;
   margin-left: auto;
   margin-right: auto;
   display: grid;
   grid-template-columns: 50% 50%;
   align-items: center;
-  background-color: #afc5e858;
+  background-color: white;
+  min-height: 400px;
+  box-shadow: 1px 3px 3px 3px rgb(211, 209, 209);
+}
+.event-wrapper:hover {
+  box-shadow: 3px 3px 3px 5px rgb(211, 209, 209);
 }
 .event-details {
-  margin: 20px;
+  margin: 20px 0;
 }
 
 .event-image {
@@ -104,7 +110,7 @@
   object-fit: cover;
 }
 .more-info-btn {
-  background-color: #008cba;
+  background-color: #226000;
   color: white;
   font-size: 1em;
   padding: 10px;
@@ -112,7 +118,7 @@
   cursor: pointer;
 }
 .more-info-btn:hover {
-  background-color: #097396;
+  background-color: #6bbb83;
 }
 @media (max-width: 950px) {
   .event-wrapper {
@@ -147,9 +153,10 @@
     margin: 2px 0;
     padding: 8px 10px;
     border-bottom: 1px solid grey;
+
     border-radius: 10%;
   }
-  .input-combined label {
+  .input-combined label label {
     padding-bottom: 10px;
   }
 

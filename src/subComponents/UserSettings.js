@@ -130,13 +130,13 @@ export default function UserSettings({ currUser }) {
         <input type="email" disabled value={currUser.email} />
       </div>
       <div className="profile-setting">
-        <label htmlFor="name">Nom d'affichage:</label>
+        <label htmlFor="name">Prénom(s) :</label>
         <input
           type="text"
           id="name"
           value={name}
           onChange={handleNameChange}
-          placeholder="Nom d'affichage"
+          placeholder="Prénom(s)"
         />
       </div>
 

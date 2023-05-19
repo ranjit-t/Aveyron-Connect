@@ -12,13 +12,17 @@
   margin-left: auto;
   margin-right: auto;
   align-items: center;
-  background-color: #afc5e858;
+  background-color: white;
   position: relative;
   padding: 0 50px;
+  box-shadow: 1px 3px 3px 3px rgb(211, 209, 209);
+}
+.activity-map:hover {
+  box-shadow: 3px 3px 3px 5px rgb(211, 209, 209);
 }
 .more-info-btn,
 button {
-  background-color: #008cba;
+  background-color: #226000;
   color: white;
   font-size: 1em;
   padding: 10px;
@@ -32,5 +36,5 @@ button {
 }
 .more-info-btn:hover,
 button:hover {
-  background-color: #097396;
+  background-color: #2f740a;
 }

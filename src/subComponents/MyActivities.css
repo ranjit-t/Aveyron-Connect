@@ -10,7 +10,7 @@
   align-items: center;
 }
 .my-activities-map {
-  background-color: #a43f00;
+  background-color: #226000;
   color: white;
   width: 100%;
   padding: 5px 100px;
@@ -30,13 +30,13 @@
   min-width: 50%;
 }
 .past-activities {
-  background-color: #a4b6d253;
+  background-color: #a43f00;
 
-  color: grey;
+  color: white;
   cursor: default;
 }
 .delete-activity {
-  background-color: red;
+  background-color: #fe4849;
   /* width: 10px; */
   max-height: fit-content;
   display: flex;
@@ -46,6 +46,9 @@
   padding: 10px;
   max-height: 20px;
   cursor: pointer;
+}
+.delete-activity:hover {
+  background-color: #ea4242;
 }
 .notifications {
   display: flex;

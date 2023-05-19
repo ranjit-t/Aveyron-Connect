@@ -59,7 +59,7 @@
 .attend-button {
   all: unset;
   max-width: fit-content;
-  background-color: #008cba;
+  background-color: #226000;
   color: white;
   padding: 5px;
   cursor: pointer;
@@ -70,13 +70,13 @@
 
 .comment-input button:hover,
 .attend-button:hover {
-  background-color: #097396;
+  background-color: #2f740a;
 }
 .not-attending {
-  background-color: red;
+  background-color: #fe4849;
 }
 .not-attending:hover {
-  background-color: rgb(210, 10, 10);
+  background-color: #ea4242;
 }
 @media (max-width: 800px) {
   .comment-section {

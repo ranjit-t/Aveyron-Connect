@@ -8,12 +8,19 @@
 .home-section1-img {
   width: 60%;
 }
+
+.head-description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .home-section2 {
   display: grid;
   grid-template-columns: 40% 40%;
   justify-content: center;
   align-items: center;
-  column-gap: 80px;
+  column-gap: 50px;
   margin: 20px;
   height: fit-content;
   margin-bottom: 60px;
@@ -26,7 +33,7 @@
 }
 .home-section2 button {
   margin-top: 20px;
-  background-color: #008cba;
+  background-color: #226000;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -34,6 +41,9 @@
   margin-top: 10px;
   cursor: pointer;
   /* width: 100%; */
+}
+.home-section2 button:hover {
+  background-color: #2f740a;
 }
 
 .home-section3 {
@@ -68,7 +78,7 @@
   object-fit: cover;
 }
 .home-section4 img {
-  max-height: 700px;
+  max-height: 600px;
 }
 .organize-activity-content,
 .add-business-content {
@@ -126,5 +136,19 @@
     align-items: center;
     margin-left: auto;
     margin-right: auto;
+  }
+}
+.add-btn,
+.add-activity-btn {
+  background-color: #226000;
+}
+.add-btn:hover,
+.add-activity-btn:hover {
+  background-color: #2f740a;
+}
+
+@media (max-width: 1000px) {
+  .head-description img {
+    display: none;
   }
 }

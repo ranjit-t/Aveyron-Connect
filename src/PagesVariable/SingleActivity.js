@@ -7,6 +7,9 @@ import { arrayRemove, doc, getDoc, updateDoc } from "firebase/firestore";
 // import useActivities from "../Data/AllActivities";
 import { collection, getDocs } from "firebase/firestore";
 
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+
 export default function SingleActivity() {
   const navigate = useNavigate();
   const [commented, setCommented] = useState(false);
@@ -17,6 +20,8 @@ export default function SingleActivity() {
 
   // const allActivities = useActivities();
   // console.log(allActivities);
+
+  const now = new Date().getTime(); // get the current time
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -100,6 +105,25 @@ export default function SingleActivity() {
     <div>
       {act ? (
         <div className="single-activity-page">
+          <Carousel
+            showThumbs={false}
+            showStatus={false}
+            interval={2000}
+            autoPlay={true}
+            infiniteLoop={true}
+            swipeable={true} // enable swiping
+            swipeScrollTolerance={10} // set minimum scroll amount
+            showIndicators={false}
+            className="event-gallery"
+          >
+            <div>
+              <img
+                src="https://images.unsplash.com/photo-1614713568397-b31b779d0498?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1725&q=80"
+                alt={act.name}
+                className="slider-image"
+              />
+            </div>
+          </Carousel>
           <h2>{act.name}</h2>
           <p className="activity-description">{act.description}</p>
           <p>
@@ -119,7 +143,7 @@ export default function SingleActivity() {
             <span
               style={{
                 cursor: "pointer",
-                color: "#097396",
+                color: "#226000",
                 fontWeight: "bold",
               }}
               onClick={() => {
@@ -143,7 +167,7 @@ export default function SingleActivity() {
                     }}
                     style={{
                       cursor: "pointer",
-                      color: "#097396",
+                      color: "#226000",
                       fontWeight: "bold",
                     }}
                   >
@@ -153,101 +177,104 @@ export default function SingleActivity() {
                 );
               })}
           </p>
-          <div>
-            {act.participants.some(
-              (participant) => participant.email === signedUser.email
-            ) ? (
-              <div>
-                <p>Génial, vous participez à cet événement !</p>
-                <p style={{ fontSize: "12px" }}>
-                  si vous changez d'avis, vous pouvez l'annuler
-                </p>
 
+          {new Date(act.date).getTime() >= now && (
+            <div>
+              {act.participants.some(
+                (participant) => participant.email === signedUser.email
+              ) ? (
+                <div>
+                  <p>Génial, vous participez à cet événement !</p>
+                  <p style={{ fontSize: "12px" }}>
+                    si vous changez d'avis, vous pouvez l'annuler
+                  </p>
+
+                  <button
+                    className="attend-button not-attending"
+                    onClick={async () => {
+                      const updatedParticipants = act.participants.filter(
+                        (participant) => participant.email !== signedUser.email
+                      );
+
+                      const actDocRef = doc(db, "activities", act.uid + act.id);
+                      const userDoc = await getDoc(actDocRef);
+                      if (userDoc.exists()) {
+                        await updateDoc(actDocRef, {
+                          participants: updatedParticipants,
+                        });
+
+                        //Removing from participated
+                        const userDocRef = doc(db, "users", signedUser.uid);
+                        const userDoc = await getDoc(userDocRef);
+                        if (userDoc.exists()) {
+                          await updateDoc(userDocRef, {
+                            participated: arrayRemove(act.id),
+                          });
+                        }
+
+                        const updatedAct = {
+                          ...act,
+                          participants: updatedParticipants,
+                        };
+                        setAct(updatedAct);
+                      }
+                    }}
+                  >
+                    Annuler
+                  </button>
+                </div>
+              ) : (
                 <button
-                  className="attend-button not-attending"
+                  className="attend-button "
                   onClick={async () => {
-                    const updatedParticipants = act.participants.filter(
-                      (participant) => participant.email !== signedUser.email
-                    );
+                    // console.log(auth.currentUser.displayName);
+                    const updatedParticipants = [
+                      ...act.participants,
+                      {
+                        user: auth.currentUser.displayName,
+                        email: signedUser.email,
+                        userUID: signedUser.uid,
+                      },
+                    ];
 
                     const actDocRef = doc(db, "activities", act.uid + act.id);
-                    const userDoc = await getDoc(actDocRef);
-                    if (userDoc.exists()) {
+                    const actDoc = await getDoc(actDocRef);
+                    if (actDoc.exists()) {
                       await updateDoc(actDocRef, {
                         participants: updatedParticipants,
                       });
-
-                      //Removing from participated
-                      const userDocRef = doc(db, "users", signedUser.uid);
-                      const userDoc = await getDoc(userDocRef);
-                      if (userDoc.exists()) {
-                        await updateDoc(userDocRef, {
-                          participated: arrayRemove(act.id),
-                        });
-                      }
-
                       const updatedAct = {
                         ...act,
                         participants: updatedParticipants,
                       };
                       setAct(updatedAct);
                     }
+                    // adding to participated
+                    const userDocRef = doc(db, "users", signedUser.uid);
+                    const userDoc = await getDoc(userDocRef);
+                    if (userDoc.exists()) {
+                      const userData = userDoc.data();
+                      const participatedActivities = [
+                        ...userData.participated,
+                        act.id,
+                      ];
+                      await updateDoc(userDocRef, {
+                        participated: participatedActivities,
+                      });
+                      console.log(
+                        `Activity ${id} added to user ${signedUser.uid}'s organized activities.`
+                      );
+                    }
+
+                    // // Remove allActivities from localStorage
+                    // localStorage.removeItem("allActivities");
                   }}
                 >
-                  Annuler
+                  Participer
                 </button>
-              </div>
-            ) : (
-              <button
-                className="attend-button "
-                onClick={async () => {
-                  // console.log(auth.currentUser.displayName);
-                  const updatedParticipants = [
-                    ...act.participants,
-                    {
-                      user: auth.currentUser.displayName,
-                      email: signedUser.email,
-                      userUID: signedUser.uid,
-                    },
-                  ];
-
-                  const actDocRef = doc(db, "activities", act.uid + act.id);
-                  const actDoc = await getDoc(actDocRef);
-                  if (actDoc.exists()) {
-                    await updateDoc(actDocRef, {
-                      participants: updatedParticipants,
-                    });
-                    const updatedAct = {
-                      ...act,
-                      participants: updatedParticipants,
-                    };
-                    setAct(updatedAct);
-                  }
-                  // adding to participated
-                  const userDocRef = doc(db, "users", signedUser.uid);
-                  const userDoc = await getDoc(userDocRef);
-                  if (userDoc.exists()) {
-                    const userData = userDoc.data();
-                    const participatedActivities = [
-                      ...userData.participated,
-                      act.id,
-                    ];
-                    await updateDoc(userDocRef, {
-                      participated: participatedActivities,
-                    });
-                    console.log(
-                      `Activity ${id} added to user ${signedUser.uid}'s organized activities.`
-                    );
-                  }
-
-                  // // Remove allActivities from localStorage
-                  // localStorage.removeItem("allActivities");
-                }}
-              >
-                Participer
-              </button>
-            )}
-          </div>
+              )}
+            </div>
+          )}
 
           <div className="comment-section">
             <div className="comment-input">

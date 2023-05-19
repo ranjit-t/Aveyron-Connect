@@ -23,7 +23,8 @@
 }
 .karma-score {
   margin-top: -3px;
-  background-color: #a43f00;
+  /* background-color: #a43f00; */
+  background-color: #b04a25;
   width: fit-content;
   padding: 10px;
   color: white;

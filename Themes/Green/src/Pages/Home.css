@@ -1,0 +1,138 @@
+.home-section1 {
+  margin-top: 45px;
+  margin-bottom: 45px;
+}
+.home-page {
+  overflow-x: hidden;
+}
+.home-section1-img {
+  width: 60%;
+}
+.home-section2 {
+  display: grid;
+  grid-template-columns: 40% 40%;
+  justify-content: center;
+  align-items: center;
+  column-gap: 80px;
+  margin: 20px;
+  height: fit-content;
+  margin-bottom: 60px;
+}
+.home-section2 img {
+  max-width: 250px;
+  max-height: 150px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+.home-section2 button {
+  margin-top: 20px;
+  background-color: #2f9659;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+  /* width: 100%; */
+}
+
+.home-section3 {
+  display: grid;
+  grid-template-columns: 55% 35%;
+  justify-content: center;
+  align-items: center;
+  column-gap: 40px;
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+.home-section4 {
+  /* width: 100%;
+  grid-template-columns: 35% 60%; */
+  display: flex;
+  width: 90%;
+  column-gap: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+.home-section3 img,
+.home-section4 img {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: cover;
+}
+.home-section4 img {
+  max-height: 700px;
+}
+.organize-activity-content,
+.add-business-content {
+  padding: 20px;
+}
+.organize-activity-content p,
+.pro-account-proposal p {
+  text-align: left;
+}
+
+.pro-account-proposal .pro-icon {
+  margin-right: 20px;
+  width: 50px;
+  height: 50px;
+}
+
+@media (max-width: 800px) {
+  .home-section1-img {
+    margin-top: 30px;
+    width: 100%;
+  }
+  .home-section2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+  }
+  .home-section3,
+  .home-section4 {
+    display: flex;
+    flex-direction: column;
+  }
+  .home-section3 {
+    flex-direction: column-reverse;
+  }
+  .home-section3 img,
+  .home-section4 img {
+    width: auto;
+    max-height: 400px;
+  }
+
+  .organize-activity-content,
+  .add-business-content,
+  .pro-account-proposal {
+    width: 80%;
+  }
+  .head-description {
+    display: flex;
+    flex-direction: column;
+    max-width: 80%;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+.add-btn,
+.add-activity-btn {
+  background-color: #2f9659;
+}
+.add-btn:hover,
+.add-activity-btn:hover {
+  background-color: #6bbb83;
+}

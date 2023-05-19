@@ -1,0 +1,24 @@
+.CreateActivity-Page {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 45px;
+}
+.CreateActivity-Page form {
+  background-color: #f2f2f2;
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+@media screen and (max-width: 600px) {
+  .signup-form {
+    padding: 10px;
+  }
+}

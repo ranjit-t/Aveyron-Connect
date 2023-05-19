@@ -7,7 +7,7 @@ export default function Footer() {
     <div className="App-footer">
       <div className="contact">
         <img src={envolope} alt="contact" />
-        Contactez-Nous:<b>&nbsp; hello@aveyron-connect.com</b>
+        Contactez-Nous:<b>&nbsp; hello@aveyronici.com</b>
       </div>
       <br></br>
       <div className="footer-links">
@@ -32,7 +32,7 @@ export default function Footer() {
             <a href="/activity-search">Rechercher des Sorties</a>
           </li>
           <li>
-            <a href="/create-activity">Créer des sorties</a>
+            <a href="/stores">Rechercher des Magasins</a>
           </li>
         </ul>
       </div>
@@ -40,7 +40,7 @@ export default function Footer() {
       <div>
         <br></br>
         <div>
-          <p>&copy; 2023 Aveyron Connect. All rights reserved.</p>
+          <p>&copy; 2023 Aveyron-ICI. All rights reserved.</p>
         </div>
       </div>
     </div>

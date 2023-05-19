@@ -14,12 +14,17 @@ export default function ActivitiesSearch() {
 
   const allActivities = useActivities();
 
-  // const x = localStorage.setItem(
-  //   "allActivities",
-  //   JSON.stringify(allActivities)
+  const now = new Date().getTime(); // get the current time
+
+  // const upcomingActivities = allActivities.filter(
+  //   (act) => new Date(act.date).getTime() >= now
   // );
-  // console.log(x);
-  const activitiesFilteredList = allActivities.filter(
+
+  const upcomingActivities = allActivities
+    .filter((act) => new Date(act.date).getTime() >= now)
+    .sort((a, b) => new Date(a.date) - new Date(b.date));
+
+  const activitiesFilteredList = upcomingActivities.filter(
     (act) =>
       act.name.toLowerCase().includes(searchName.toLowerCase()) &&
       act.city.toLowerCase().includes(searchCity.toLowerCase()) &&
@@ -31,7 +36,7 @@ export default function ActivitiesSearch() {
       <h1>Sorties</h1>
       <div className="search-container">
         <div className="input-combined">
-          <label>
+          {/* <label>
             <span>Quoi</span>
             <input
               type="text"
@@ -41,7 +46,7 @@ export default function ActivitiesSearch() {
               }}
               value={searchName}
             />
-          </label>
+          </label> */}
           <label>
             <span>Où</span>
             <input
@@ -85,36 +90,44 @@ export default function ActivitiesSearch() {
               return (
                 <motion.div
                   key={act.name}
-                  className="activity-map"
+                  className="event-wrapper"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <p>
-                    <b>{act.name}</b>
-                  </p>
-                  <p>{act.description.slice(0, 50) + "....."}</p>
-                  <p>
-                    <b>Ville:</b>
-                    {act.city}
-                  </p>
-                  {/* <p>
+                  <div className="store-image">
+                    <img
+                      src="https://images.unsplash.com/photo-1614713568397-b31b779d0498?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1725&q=80"
+                      alt={act.name}
+                    />
+                  </div>
+                  <div className="event-details">
+                    <p>
+                      <b>{act.name}</b>
+                    </p>
+                    <p>{act.description.slice(0, 50) + "....."}</p>
+                    <p>
+                      <b>Ville:</b>
+                      {act.city}
+                    </p>
+                    {/* <p>
                     <b>Adresse:</b>
                     {act.address}
                   </p> */}
-                  <p>
-                    <b>Date:</b>
-                    {act.date}
-                  </p>
-                  <button
-                    className="more-info-btn"
-                    onClick={() => {
-                      navigate(`/activity/${act.id}`);
-                    }}
-                  >
-                    Plus d'options
-                  </button>
+                    <p>
+                      <b>Date:</b>
+                      {act.date}
+                    </p>
+                    <button
+                      className="more-info-btn"
+                      onClick={() => {
+                        navigate(`/activity/${act.id}`);
+                      }}
+                    >
+                      Plus d'options
+                    </button>
+                  </div>
                 </motion.div>
               );
             })
