@@ -3,6 +3,8 @@ import "./Footer.css";
 import envolope from "../Images/envolope.png";
 import googleplay from "../Images/Appgoogleplay.png";
 import applestore from "../Images/AppAppStore.png";
+import facebook from "../Images/facebook.png";
+import instagram from "../Images/instagram.png";
 
 export default function Footer() {
   return (
@@ -45,6 +47,22 @@ export default function Footer() {
         </p>
         <img src={googleplay} alt="googleplay" />
         <img src={applestore} alt="applestore" />
+        <div className="social-media">
+          <a
+            href="https://www.facebook.com/aveyronici"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src={facebook} alt="facebook" />
+          </a>
+          <a
+            href="https://instagram.com/aveyronici"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src={instagram} alt="facebook" />
+          </a>
+        </div>
       </div>
 
       <div>

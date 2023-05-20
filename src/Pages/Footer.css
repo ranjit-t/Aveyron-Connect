@@ -49,3 +49,11 @@ ul a {
 .appstores img {
   max-width: 150px;
 }
+.social-media {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.social-media img {
+  max-width: 50px;
+}
