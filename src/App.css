@@ -1,7 +1,7 @@
 .App {
   text-align: center;
   font-family: "Fira Mono", monospace;
-  overflow-x: hidden;
+  overflow-x: hidden !important;
   line-height: 1.5;
 }
 .logo {

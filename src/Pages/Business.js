@@ -85,9 +85,9 @@ export default function Business() {
                     <img src={Store.photos[0]} alt={Store.name} />
                   </div>
                   <div className="event-details">
-                    <p>
+                    <div>
                       <h3>{Store.name}</h3>
-                    </p>
+                    </div>
                     <p>
                       <b>Type: </b>
                       {Store.type}
