@@ -13,9 +13,7 @@
   /* justify-content: center; */
   width: 50%;
 }
-.profile-component {
-  max-width: 100%;
-}
+
 .profile-menu {
   display: flex;
   column-gap: 10px;
@@ -192,5 +190,10 @@ ul {
     height: 40px;
     margin-right: 0;
     padding: 5px;
+  }
+}
+@media (min-width: 800px) {
+  .profile-component {
+    max-width: 100%;
   }
 }
