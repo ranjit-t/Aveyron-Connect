@@ -34,28 +34,24 @@ export default function ActivitiesSearch() {
   return (
     <div className="activity-page">
       <h1>Sorties</h1>
-      <div className="search-container business-search-container">
-        <div className="input-combined input-DateDIV">
-          <input
-            type="text"
-            placeholder="Ville"
-            onChange={(e) => {
-              setSearchCity(e.target.value);
-            }}
-            value={searchCity}
-          />
-        </div>
-        <div className="input-combined input-DateDIV">
-          <input
-            className="date-input"
-            type="date"
-            placeholder=""
-            onChange={(e) => {
-              setSearchDate(e.target.value);
-            }}
-            value={searchDate}
-          />
-        </div>
+      <div className="search-container-sorties">
+        <input
+          type="text"
+          placeholder="Ville"
+          onChange={(e) => {
+            setSearchCity(e.target.value);
+          }}
+          value={searchCity}
+        />
+        <input
+          className="date-input"
+          type="date"
+          placeholder="Date"
+          onChange={(e) => {
+            setSearchDate(e.target.value);
+          }}
+          value={searchDate}
+        />
         <div className="input-buttons clear-business-search">
           <span
             onClick={() => {

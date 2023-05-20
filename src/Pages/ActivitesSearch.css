@@ -33,20 +33,30 @@ button {
   margin: 0;
   max-width: 200px;
 }
-button {
-}
+
 .more-info-btn:hover,
 button:hover {
   background-color: #2f740a;
+  max-width: 200px;
 }
-
-.input-DateDIV {
+.search-container-sorties input {
+  border: 1px solid #226000;
   border-radius: 0;
-  max-width: 400px;
-  min-width: 250px;
+  margin: 10px;
+  padding: 10px;
+  max-width: 200px;
 }
-.input-DateDIV input,
-.input-DateDIV input:hover {
-  background-color: white;
-  border: none;
+.search-container-sorties {
+  display: flex;
+  flex-direction: row;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  align-items: center;
+}
+@media (max-width: 800px) {
+  .search-container-sorties {
+    flex-direction: column;
+    align-items: center;
+  }
 }

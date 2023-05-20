@@ -24,16 +24,6 @@ export default function Business() {
       <h1>Nos Meilleures Adresses</h1>
       <div className="search-container business-search-container">
         <div className="input-combined input-business">
-          {/* <label>
-            <input
-              type="text"
-              placeholder="Nom"
-              onChange={(e) => {
-                setSearchStoreName(e.target.value);
-              }}
-              value={searchStoreName}
-            />
-          </label> */}
           <label>
             <input
               type="text"
