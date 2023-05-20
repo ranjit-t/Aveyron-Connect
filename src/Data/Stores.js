@@ -13,8 +13,8 @@ export const Stores = [
     contact: "0123456789",
     website: "http://www.chezpaul.fr",
     photos: [
-      "https://images.unsplash.com/photo-1533052476933-b8886c2652ad?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
-      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+      "https://firebasestorage.googleapis.com/v0/b/aveyron-connect.appspot.com/o/business%2Fchezpaulettout1.jpeg?alt=media&token=d43498a0-5122-492f-a347-a8612479017f",
+      "https://firebasestorage.googleapis.com/v0/b/aveyron-connect.appspot.com/o/business%2Fchezpaulettout2.jpeg?alt=media&token=3ad61be9-8b78-4e00-ac16-b779ba5a7369",
       "https://plus.unsplash.com/premium_photo-1663852706199-52e7cd98468e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
     ],
     menuPhoto:

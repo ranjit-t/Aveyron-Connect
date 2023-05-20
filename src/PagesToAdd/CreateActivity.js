@@ -22,15 +22,11 @@ const CreateActivity = () => {
     event.preventDefault();
 
     try {
-      const id =
-        Math.floor(Math.random() * 10000) +
-        new Date().toLocaleDateString() +
-        "-" +
-        new Date().toLocaleTimeString();
+      const id = Math.floor(Math.random() * 100000);
 
       let photoURL;
 
-      const imageRef = ref(storage, `activities/${id}.jpg`);
+      const imageRef = ref(storage, `activities/${activityName}.jpg`);
 
       const uploadTask = uploadBytesResumable(imageRef, photo1);
 
@@ -62,7 +58,7 @@ const CreateActivity = () => {
         organizer: signedUser.displayName,
         email: signedUser.email,
         uid: signedUser.uid,
-        description,
+        description: description.replace(/\n/g, "<br>"),
         date,
         timing: time,
         city,
@@ -87,8 +83,8 @@ const CreateActivity = () => {
           `Activity ${id} added to user ${signedUser.uid}'s organized activities.`
         );
 
-        // Remove allActivities from localStorage
-        localStorage.removeItem("allActivities");
+        // // Remove allActivities from localStorage
+        // localStorage.removeItem("allActivities");
         setErrorMessage("Activité ajoutée avec succès !"); // clear any previous error message
         setTimeout(() => {
           navigate(`/profile`);

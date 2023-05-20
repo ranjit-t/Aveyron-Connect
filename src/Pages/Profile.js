@@ -154,18 +154,18 @@ export default function Profile() {
                 <p className="mobile-remove">Paramètres</p>
               </div>
             </div>
-            <div>
+            <div className="profile-component">
               {profileMenu === "myactivities" && <MyActivities></MyActivities>}
             </div>
-            <div>
+            <div className="profile-component">
               {profileMenu === "organise" && (
                 <OrganiseActivity></OrganiseActivity>
               )}
             </div>
-            <div>
+            <div className="profile-component">
               {profileMenu === "attending" && <Participations></Participations>}
             </div>
-            <div>
+            <div className="profile-component">
               {profileMenu === "settings" && (
                 <UserSettings currUser={user}></UserSettings>
               )}

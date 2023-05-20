@@ -65,7 +65,7 @@ export default function MyActivities() {
                     navigate(`/activity/${act.id}`);
                   }}
                 >
-                  <p>
+                  <p style={{ lineHeight: "1.3" }}>
                     <b>{act.name}</b>
                   </p>
                   <p>{act.date}</p>
@@ -100,7 +100,7 @@ export default function MyActivities() {
                 }}
               >
                 <div>
-                  <p>
+                  <p style={{ lineHeight: "1.3" }}>
                     <b>{act.name}</b>
                   </p>
                   <p>{act.date}</p>

@@ -133,7 +133,10 @@ export default function SingleActivity() {
             </div>
           </Carousel>
           <h2>{act.name}</h2>
-          <p className="activity-description">{act.description}</p>
+          <p
+            className="activity-description"
+            dangerouslySetInnerHTML={{ __html: act.description }}
+          />
           <p>
             <b>Date: </b>
             {act.date}

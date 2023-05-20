@@ -24,25 +24,40 @@ export default function SingleBusiness() {
           className="event-gallery"
         >
           <div>
-            <img
-              src={Store.photos[0]}
-              alt={Store.name}
-              className="slider-image"
-            />
+            {Store.photos[0] && (
+              <img
+                src={Store.photos[0]}
+                alt={Store.name}
+                className="slider-image"
+              />
+            )}
           </div>
           <div>
-            <img
-              src={Store.photos[1]}
-              alt={Store.name}
-              className="slider-image"
-            />
+            {Store.photos[1] && (
+              <img
+                src={Store.photos[1]}
+                alt={Store.name}
+                className="slider-image"
+              />
+            )}
           </div>
           <div>
-            <img
-              src={Store.photos[2]}
-              alt={Store.name}
-              className="slider-image"
-            />
+            {Store.photos[2] && (
+              <img
+                src={Store.photos[2]}
+                alt={Store.name}
+                className="slider-image"
+              />
+            )}
+          </div>
+          <div>
+            {Store.photos[3] && (
+              <img
+                src={Store.photos[3]}
+                alt={Store.name}
+                className="slider-image"
+              />
+            )}
           </div>
         </Carousel>
         <div className="event-details">
@@ -65,7 +80,7 @@ export default function SingleBusiness() {
           <div className="timing-menu">
             <div>
               <p>
-                <b>Timings </b>
+                <b>Horaires </b>
               </p>
               <p>
                 <b>Lundi: </b>
