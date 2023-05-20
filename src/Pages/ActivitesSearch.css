@@ -30,11 +30,23 @@ button {
   cursor: pointer;
   width: fit-content;
   margin-bottom: 20px;
+  margin: 0;
+  max-width: 200px;
 }
 button {
-  margin: 0;
 }
 .more-info-btn:hover,
 button:hover {
   background-color: #2f740a;
+}
+
+.input-DateDIV {
+  border-radius: 0;
+  max-width: 400px;
+  min-width: 250px;
+}
+.input-DateDIV input,
+.input-DateDIV input:hover {
+  background-color: white;
+  border: none;
 }
